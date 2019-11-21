@@ -285,7 +285,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 59XJFY72WQ;
+				DEVELOPMENT_TEAM = WN3YQ2PUY2;
 				INFOPLIST_FILE = Final5280/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,7 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 59XJFY72WQ;
+				DEVELOPMENT_TEAM = WN3YQ2PUY2;
 				INFOPLIST_FILE = Final5280/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
