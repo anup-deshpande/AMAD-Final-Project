@@ -1,0 +1,6 @@
+framework module Pods_Final5280 {
+  umbrella header "Pods-Final5280-umbrella.h"
+
+  export *
+  module * { export * }
+}

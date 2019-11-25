@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>338380025786-9f1i7n3dgea2pfn2d820kfnvrfs299vj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.338380025786-9f1i7n3dgea2pfn2d820kfnvrfs299vj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBbsOfYHlzFW6GaG6jVgoVZRiXAHo1dB-Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>338380025786</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.uncc.Final5280</string>
+	<key>PROJECT_ID</key>
+	<string>easydollardb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>easydollardb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:338380025786:ios:8315bd5ad1ccc770f07783</string>
+	<key>DATABASE_URL</key>
+	<string>https://easydollardb.firebaseio.com</string>
+</dict>
+</plist>
