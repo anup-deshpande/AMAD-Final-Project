@@ -13,6 +13,12 @@
 		76A9DAF92386356100F73A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A9DAF72386356100F73A7D /* Main.storyboard */; };
 		76A9DAFB2386356400F73A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76A9DAFA2386356400F73A7D /* Assets.xcassets */; };
 		76A9DAFE2386356400F73A7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A9DAFC2386356400F73A7D /* LaunchScreen.storyboard */; };
+		76C2008B238EFF3100F0E1F1 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008A238EFF3100F0E1F1 /* menuViewController.swift */; };
+		76C2008E238F09E400F0E1F1 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008D238F09E400F0E1F1 /* SlideInTransition.swift */; };
+		76C20090238F8B1100F0E1F1 /* SearchJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008F238F8B1100F0E1F1 /* SearchJobsViewController.swift */; };
+		76C20092238F8C6900F0E1F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20091238F8C6900F0E1F1 /* HomeViewController.swift */; };
+		76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */; };
+		76C20096238F925200F0E1F1 /* YourJobPostingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */; };
 		B96A56AD23873D170078F98A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A56AC23873D170078F98A /* SignUpViewController.swift */; };
 		B975B145238770A600863D58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975B144238770A600863D58 /* GoogleService-Info.plist */; };
 		F9783FE0451AFC745FE8567D /* Pods_Final5280.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D403849CBF96AFF8DE3F7DBF /* Pods_Final5280.framework */; };
@@ -29,6 +35,12 @@
 		76A9DAFA2386356400F73A7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76A9DAFD2386356400F73A7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76A9DAFF2386356400F73A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76C2008A238EFF3100F0E1F1 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = SOURCE_ROOT; };
+		76C2008D238F09E400F0E1F1 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
+		76C2008F238F8B1100F0E1F1 /* SearchJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchJobsViewController.swift; sourceTree = "<group>"; };
+		76C20091238F8C6900F0E1F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingJobsViewController.swift; sourceTree = "<group>"; };
+		76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourJobPostingsViewController.swift; sourceTree = "<group>"; };
 		B96A56AC23873D170078F98A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B975B144238770A600863D58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D403849CBF96AFF8DE3F7DBF /* Pods_Final5280.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final5280.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,10 +79,9 @@
 		76A9DAF02386356100F73A7D /* Final5280 */ = {
 			isa = PBXGroup;
 			children = (
-				B975B1462387750A00863D58 /* Controller */,
+				B975B1462387750A00863D58 /* Controllers */,
+				76C2008C238F08DC00F0E1F1 /* Transitions */,
 				76A9DAF12386356100F73A7D /* AppDelegate.swift */,
-				B96A56AC23873D170078F98A /* SignUpViewController.swift */,
-				76A9DAF52386356100F73A7D /* ViewController.swift */,
 				76A9DAF32386356100F73A7D /* SceneDelegate.swift */,
 				76A9DAF72386356100F73A7D /* Main.storyboard */,
 				76A9DAFA2386356400F73A7D /* Assets.xcassets */,
@@ -81,11 +92,26 @@
 			path = Final5280;
 			sourceTree = "<group>";
 		};
-		B975B1462387750A00863D58 /* Controller */ = {
+		76C2008C238F08DC00F0E1F1 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
+				76C2008D238F09E400F0E1F1 /* SlideInTransition.swift */,
 			);
-			path = Controller;
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		B975B1462387750A00863D58 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B96A56AC23873D170078F98A /* SignUpViewController.swift */,
+				76C2008A238EFF3100F0E1F1 /* menuViewController.swift */,
+				76A9DAF52386356100F73A7D /* ViewController.swift */,
+				76C2008F238F8B1100F0E1F1 /* SearchJobsViewController.swift */,
+				76C20091238F8C6900F0E1F1 /* HomeViewController.swift */,
+				76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */,
+				76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		BA487555BA71F44BE2F838E6 /* Frameworks */ = {
@@ -221,10 +247,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C20096238F925200F0E1F1 /* YourJobPostingsViewController.swift in Sources */,
 				76A9DAF62386356100F73A7D /* ViewController.swift in Sources */,
+				76C2008B238EFF3100F0E1F1 /* menuViewController.swift in Sources */,
 				76A9DAF22386356100F73A7D /* AppDelegate.swift in Sources */,
+				76C20090238F8B1100F0E1F1 /* SearchJobsViewController.swift in Sources */,
+				76C20092238F8C6900F0E1F1 /* HomeViewController.swift in Sources */,
+				76C2008E238F09E400F0E1F1 /* SlideInTransition.swift in Sources */,
 				B96A56AD23873D170078F98A /* SignUpViewController.swift in Sources */,
 				76A9DAF42386356100F73A7D /* SceneDelegate.swift in Sources */,
+				76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
