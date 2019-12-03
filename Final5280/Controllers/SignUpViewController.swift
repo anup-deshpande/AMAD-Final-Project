@@ -25,8 +25,8 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseApp.configure()
-        let db = Firestore.firestore()
+        //FirebaseApp.configure()
+        //let db = Firestore.firestore()
         imagePicker.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped(gesture:)))
         profilePicture.addGestureRecognizer(tapGesture)
