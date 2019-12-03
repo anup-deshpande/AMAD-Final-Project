@@ -29,6 +29,12 @@ class SignUpViewController: UIViewController {
         let db = Firestore.firestore()
         
         imagePicker.delegate = self
+        firstName.delegate = self
+        lastName.delegate = self
+        email.delegate = self
+        password.delegate = self
+        confirmPassword.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped(gesture:)))
         profilePicture.addGestureRecognizer(tapGesture)
         profilePicture.isUserInteractionEnabled = true
@@ -67,4 +73,15 @@ extension SignUpViewController : UIImagePickerControllerDelegate , UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension SignUpViewController: UITextFieldDelegate{
+   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+    }
 }
