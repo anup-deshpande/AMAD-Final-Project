@@ -19,6 +19,7 @@
 		76C20092238F8C6900F0E1F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20091238F8C6900F0E1F1 /* HomeViewController.swift */; };
 		76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */; };
 		76C20096238F925200F0E1F1 /* YourJobPostingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */; };
+		B946B9E723965E3B00FF73F6 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946B9E623965E3B00FF73F6 /* user.swift */; };
 		B96A56AD23873D170078F98A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A56AC23873D170078F98A /* SignUpViewController.swift */; };
 		B975B145238770A600863D58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975B144238770A600863D58 /* GoogleService-Info.plist */; };
 		F9783FE0451AFC745FE8567D /* Pods_Final5280.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D403849CBF96AFF8DE3F7DBF /* Pods_Final5280.framework */; };
@@ -41,6 +42,7 @@
 		76C20091238F8C6900F0E1F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingJobsViewController.swift; sourceTree = "<group>"; };
 		76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourJobPostingsViewController.swift; sourceTree = "<group>"; };
+		B946B9E623965E3B00FF73F6 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		B96A56AC23873D170078F98A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B975B144238770A600863D58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D403849CBF96AFF8DE3F7DBF /* Pods_Final5280.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final5280.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 		76A9DAF02386356100F73A7D /* Final5280 */ = {
 			isa = PBXGroup;
 			children = (
+				B946B9E523965DFC00FF73F6 /* Model */,
 				B975B1462387750A00863D58 /* Controllers */,
 				76C2008C238F08DC00F0E1F1 /* Transitions */,
 				76A9DAF12386356100F73A7D /* AppDelegate.swift */,
@@ -98,6 +101,14 @@
 				76C2008D238F09E400F0E1F1 /* SlideInTransition.swift */,
 			);
 			path = Transitions;
+			sourceTree = "<group>";
+		};
+		B946B9E523965DFC00FF73F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B946B9E623965E3B00FF73F6 /* user.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B975B1462387750A00863D58 /* Controllers */ = {
@@ -256,6 +267,7 @@
 				76C2008E238F09E400F0E1F1 /* SlideInTransition.swift in Sources */,
 				B96A56AD23873D170078F98A /* SignUpViewController.swift in Sources */,
 				76A9DAF42386356100F73A7D /* SceneDelegate.swift in Sources */,
+				B946B9E723965E3B00FF73F6 /* user.swift in Sources */,
 				76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

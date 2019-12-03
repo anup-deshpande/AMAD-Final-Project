@@ -1,0 +1,26 @@
+//
+//  user.swift
+//  Final5280
+//
+//  Created by Adwait Tathe on 12/3/19.
+//  Copyright © 2019 Anup Deshpande. All rights reserved.
+//
+
+import Foundation
+
+class User{
+    
+    var firstName : String?
+    var lastName : String?
+    var email : String?
+    var profilePicture : String?
+    
+    init(_ firstName: String, _ lastName : String , _ email : String , _ profilePicture: String) {
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.profilePicture = profilePicture
+    }
+    
+    
+}
