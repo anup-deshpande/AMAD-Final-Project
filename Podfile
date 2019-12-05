@@ -8,7 +8,8 @@ target 'Final5280' do
   # Pods for Final5280
   
   pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Database'
-  pod 'FirebaseFirestoreSwift'
-
+  pod 'Firebase/Auth'
+  
 end

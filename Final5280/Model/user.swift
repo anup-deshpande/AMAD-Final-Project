@@ -10,16 +10,21 @@ import Foundation
 
 class User{
     
+    var userId : String?
     var firstName : String?
     var lastName : String?
     var email : String?
     var profilePicture : String?
     
-    init(_ firstName: String, _ lastName : String , _ email : String , _ profilePicture: String) {
+    init(_ id: String,_ firstName: String, _ lastName : String , _ email : String , _ profilePicture: String) {
+        self.userId = id
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
         self.profilePicture = profilePicture
+    }
+    init(){
+        
     }
     
     

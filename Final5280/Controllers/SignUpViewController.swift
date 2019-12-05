@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseCore
-import FirebaseFirestore
+
 
 class SignUpViewController: UIViewController {
 
@@ -20,13 +20,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var firstName: UITextField!
    
+    var ref: DatabaseReference!
     let imagePicker = UIImagePickerController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FirebaseApp.configure()
-        let db = Firestore.firestore()
+
+        
         
         imagePicker.delegate = self
         firstName.delegate = self
@@ -34,7 +35,7 @@ class SignUpViewController: UIViewController {
         email.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
-        
+        ref = Database.database().reference()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped(gesture:)))
         profilePicture.addGestureRecognizer(tapGesture)
         profilePicture.isUserInteractionEnabled = true
@@ -57,6 +58,24 @@ class SignUpViewController: UIViewController {
         print(password.text!);
         print(confirmPassword.text!);
         
+        let user = User()
+        user.email = email.text!
+        user.firstName = firstName.text!
+        user.lastName = lastName.text!
+        user.profilePicture = ""
+        
+        
+        Auth.auth().createUser(withEmail: user.email!, password: password.text!) { (result, error) in
+            if(result != nil){
+                print(result?.user.uid)
+                user.userId = result?.user.uid
+                self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
+            }
+            
+            if(error != nil){
+                print(error!)
+            }
+        }
         
         
     }
