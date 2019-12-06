@@ -13,9 +13,13 @@ class HomeViewController: UIViewController {
     let transition = SlideInTransition()
     var topView: UIView?
         
+    @IBOutlet weak var addJobButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var menuType = MenuType.searchJobs
+        let menuType = MenuType.searchJobs
+        addJobButton.isEnabled = false
+        addJobButton.tintColor = UIColor.clear
         self.transitionToNew(menuType)
         
     }
@@ -38,6 +42,9 @@ class HomeViewController: UIViewController {
     func transitionToNew(_ menuType: MenuType){
         topView?.removeFromSuperview()
         
+        addJobButton.isEnabled = false
+        addJobButton.tintColor = UIColor.clear
+        
         switch menuType {
         case .logout:
             guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginNavigation") else { return }
@@ -47,6 +54,8 @@ class HomeViewController: UIViewController {
             
         case .jobPostings:
             self.title = "Job Postings"
+            self.addJobButton.isEnabled = true
+            self.addJobButton.tintColor = UIColor.black
             guard let yourJobPostingsVC = self.storyboard?.instantiateViewController(withIdentifier: "YourJobPostingsViewController") else { return }
             view.addSubview(yourJobPostingsVC.view)
             self.topView = yourJobPostingsVC.view
