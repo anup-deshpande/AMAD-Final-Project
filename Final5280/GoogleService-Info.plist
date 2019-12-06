@@ -19,18 +19,20 @@
 	<key>STORAGE_BUCKET</key>
 	<string>easydollardb.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:338380025786:ios:8315bd5ad1ccc770f07783</string>
 	<key>DATABASE_URL</key>
 	<string>https://easydollardb.firebaseio.com</string>
+	<key>FIRAnalyticsDebugEnabled</key>
+	<true/>
 </dict>
 </plist>

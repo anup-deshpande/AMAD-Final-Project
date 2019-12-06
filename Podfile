@@ -6,10 +6,11 @@ target 'Final5280' do
   use_frameworks!
 
   # Pods for Final5280
-  
-  pod 'Firebase/Core'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  
+
+
+pod 'Firebase/Core'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
+
 end

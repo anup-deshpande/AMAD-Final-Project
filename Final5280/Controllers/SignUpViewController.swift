@@ -8,8 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseCore
-
 
 class SignUpViewController: UIViewController {
 
@@ -19,26 +17,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var firstName: UITextField!
-   
-    var ref: DatabaseReference!
     let imagePicker = UIImagePickerController()
-    
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        
         imagePicker.delegate = self
         firstName.delegate = self
         lastName.delegate = self
         email.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
-        ref = Database.database().reference()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped(gesture:)))
         profilePicture.addGestureRecognizer(tapGesture)
         profilePicture.isUserInteractionEnabled = true
+        self.ref = Database.database().reference()
  
     }
     @objc func imageTapped(gesture: UIGestureRecognizer) {
@@ -70,8 +63,10 @@ class SignUpViewController: UIViewController {
                 print(result?.user.uid)
                 user.userId = result?.user.uid
                 self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
+                
+//                self.ref.child("Users").child(user.userId!).setValue("asdsad")
             }
-            
+
             if(error != nil){
                 print(error!)
             }
