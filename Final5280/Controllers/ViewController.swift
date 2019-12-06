@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class ViewController: UIViewController {
@@ -19,9 +20,47 @@ class ViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "LoginToHomeSeague", sender: nil)
+        }
+    }
+    @IBAction func unWindtoLogin(_ sender: UIStoryboardSegue){
+        
     }
     
+    func validation() -> Bool
+    {
+        var flag = true
+        if(emailTextField.text == ""){
+            print("Email Cannot be empty");
+            flag = false
+        }
+        if(passwordTextField.text == ""){
+            print("Password Cannot be empty");
+            flag = false
+        }
+        return flag
+    }
 
+    @IBAction func login(_ sender: Any) {
+        if(validation())
+        {
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){ [weak self] authResult, error in
+                if(error == nil)
+                {
+                    guard let strongSelf = self else { return }
+                    print("USER SIGNED IN");
+                    self!.performSegue(withIdentifier: "LoginToHomeSeague", sender: nil)
+                    
+                }
+                else
+                {
+                    print("Wrong Email or password");
+                }
+            }
+            
+        } 
+    }
 }
 
 extension ViewController: UITextFieldDelegate{

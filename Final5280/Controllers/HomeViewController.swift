@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -42,6 +43,12 @@ class HomeViewController: UIViewController {
         case .logout:
             guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginNavigation") else { return }
             loginVC.modalPresentationStyle = .overCurrentContext
+            do{
+               try Auth.auth().signOut()
+            }catch{
+                
+            }
+            
             present(loginVC, animated: true)
             break
             

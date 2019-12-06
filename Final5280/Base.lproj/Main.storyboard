@@ -46,7 +46,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="cjH-AT-eRA" kind="presentation" modalPresentationStyle="fullScreen" id="RZY-A6-9n4"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h8y-yy-Sud"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blO-Kg-5PZ">
@@ -64,7 +64,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="baG-p4-VYz" kind="show" id="Us8-Nz-bw7"/>
+                                    <segue destination="baG-p4-VYz" kind="show" identifier="loginToSignUpSegway" id="Us8-Nz-bw7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -85,6 +85,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="XE1-mw-bdc" id="ELH-h0-3Rw"/>
                         <outlet property="passwordTextField" destination="pqD-xD-6Me" id="i9l-8w-EQc"/>
+                        <segue destination="cjH-AT-eRA" kind="presentation" identifier="LoginToHomeSeague" modalPresentationStyle="fullScreen" id="60c-ii-rvR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

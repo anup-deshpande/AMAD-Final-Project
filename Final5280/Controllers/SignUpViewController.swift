@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -19,6 +19,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var firstName: UITextField!
     let imagePicker = UIImagePickerController()
     var ref: DatabaseReference!
+    let storage = Storage.storage()
+    var data = Data()
+    var metaData = StorageMetadata()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,8 @@ class SignUpViewController: UIViewController {
         profilePicture.addGestureRecognizer(tapGesture)
         profilePicture.isUserInteractionEnabled = true
         self.ref = Database.database().reference()
- 
+        
+        
     }
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
@@ -40,7 +44,7 @@ class SignUpViewController: UIViewController {
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true)
-
+            
         }
     }
     
@@ -57,25 +61,44 @@ class SignUpViewController: UIViewController {
         user.lastName = lastName.text!
         user.profilePicture = ""
         
-        
-        Auth.auth().createUser(withEmail: user.email!, password: password.text!) { (result, error) in
-            if(result != nil){
-                print(result?.user.uid)
-                user.userId = result?.user.uid
-                self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
-                
-//                self.ref.child("Users").child(user.userId!).setValue("asdsad")
+        let profileRef = self.storage.reference().child("userProfile").child(UUID().uuidString)
+        let uploadTask = profileRef.putData(self.data, metadata: self.metaData) { (metadata, error) in
+            if error == nil
+            {
+                print("success")
+                profileRef.downloadURL { (url, error) in
+                    user.profilePicture = url?.absoluteString
+                    Auth.auth().createUser(withEmail: user.email!, password: self.password.text!) { (result, error) in
+                        if(result != nil){
+                            user.userId = result?.user.uid
+                            self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
+                            
+                            
+                            
+                            
+                        }
+                        if(error != nil){
+                            print(error!)
+                        }
+                        
+                    }
+                    
+                }
             }
-
-            if(error != nil){
-                print(error!)
+            else
+            {
+                print("ERROR")
+                print(error)
             }
         }
         
         
     }
-
+    
+    
 }
+
+
 
 extension SignUpViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate
 {
@@ -83,14 +106,18 @@ extension SignUpViewController : UIImagePickerControllerDelegate , UINavigationC
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         {
             profilePicture.image = image
+            self.data = (profilePicture.image?.pngData())!
+            self.metaData.contentType = "image/png"
+            
+            
         }
         dismiss(animated: true, completion: nil)
+        
     }
     
 }
-
 extension SignUpViewController: UITextFieldDelegate{
-   
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
