@@ -64,5 +64,7 @@
 	</array>
 	<key>FIRAnalyticsDebugEnabled</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>You can click pictures for your work</string>
 </dict>
 </plist>
