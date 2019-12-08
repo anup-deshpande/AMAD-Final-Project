@@ -8,12 +8,17 @@
 
 import UIKit
 import Firebase
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        // Set the Google Place API's autocomplete UI control
+        GMSPlacesClient.provideAPIKey("AIzaSyD9MdKROlLwXjhPSHiMj5l6EBhoEd6fAVk")
+        
         return true
     }
 

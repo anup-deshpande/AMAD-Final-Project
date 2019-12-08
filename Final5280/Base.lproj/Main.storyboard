@@ -489,6 +489,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="LQx-t3-WLZ"/>
                                 </constraints>
+                                <locale key="locale" localeIdentifier="en_US"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-Go-RNz">
                                 <rect key="frame" x="16" y="414" width="343" height="21"/>
@@ -500,6 +501,9 @@
                                 <rect key="frame" x="16" y="608" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didTapLocationText:" destination="XLL-R7-lqU" eventType="editingDidBegin" id="JHG-Fs-B34"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comments" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gm7-8Z-bVa">
                                 <rect key="frame" x="16" y="657" width="343" height="34"/>
@@ -507,14 +511,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhX-QP-sxF">
-                                <rect key="frame" x="142" y="721" width="90" height="30"/>
+                                <rect key="frame" x="127.66666666666669" y="721" width="120" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Vet-y1-g6R"/>
+                                    <constraint firstAttribute="width" constant="120" id="Vet-y1-g6R">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapSubmit:" destination="XLL-R7-lqU" eventType="touchUpInside" id="bef-xN-ZHt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -523,7 +541,6 @@
                             <constraint firstItem="7fU-m4-oi6" firstAttribute="top" secondItem="Jdv-mq-GAt" secondAttribute="bottom" constant="15" id="4SS-kq-Ljz"/>
                             <constraint firstItem="Nb9-Vy-fTc" firstAttribute="centerX" secondItem="Cij-cC-bAc" secondAttribute="centerX" id="5Ct-nJ-3Ky"/>
                             <constraint firstItem="Jdv-mq-GAt" firstAttribute="top" secondItem="DAP-Kp-M1L" secondAttribute="bottom" constant="15" id="5oe-jn-cKa"/>
-                            <constraint firstItem="nXJ-66-5Lf" firstAttribute="trailing" secondItem="GhX-QP-sxF" secondAttribute="trailing" constant="143" id="7et-5I-jtx"/>
                             <constraint firstItem="nXJ-66-5Lf" firstAttribute="trailing" secondItem="d5J-Lp-Fln" secondAttribute="trailing" constant="16" id="99M-rt-EuG"/>
                             <constraint firstItem="nXJ-66-5Lf" firstAttribute="trailing" secondItem="7fU-m4-oi6" secondAttribute="trailing" constant="16" id="9Ns-q2-FVX"/>
                             <constraint firstItem="d5J-Lp-Fln" firstAttribute="leading" secondItem="nXJ-66-5Lf" secondAttribute="leading" constant="16" id="F84-Ch-lU6"/>
@@ -544,11 +561,20 @@
                             <constraint firstItem="nXJ-66-5Lf" firstAttribute="trailing" secondItem="Jdv-mq-GAt" secondAttribute="trailing" constant="16" id="mGW-Rc-bTh"/>
                             <constraint firstItem="WhW-Go-RNz" firstAttribute="top" secondItem="7fU-m4-oi6" secondAttribute="bottom" constant="15" id="muq-Xv-8aV"/>
                             <constraint firstItem="Gm7-8Z-bVa" firstAttribute="leading" secondItem="nXJ-66-5Lf" secondAttribute="leading" constant="16" id="ncO-E6-a2F"/>
-                            <constraint firstItem="GhX-QP-sxF" firstAttribute="leading" secondItem="nXJ-66-5Lf" secondAttribute="leading" constant="142" id="orW-nw-GHS"/>
+                            <constraint firstItem="GhX-QP-sxF" firstAttribute="centerX" secondItem="Cij-cC-bAc" secondAttribute="centerX" id="yF8-OD-MZf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nXJ-66-5Lf"/>
                     </view>
                     <navigationItem key="navigationItem" id="EiQ-m8-3GO"/>
+                    <connections>
+                        <outlet property="DatePicker" destination="dAr-xZ-Qe7" id="CO1-SZ-FxP"/>
+                        <outlet property="clickImage" destination="Nb9-Vy-fTc" id="62b-4x-3g1"/>
+                        <outlet property="commentsTextField" destination="Gm7-8Z-bVa" id="mEn-76-R64"/>
+                        <outlet property="jobDescTextField" destination="Jdv-mq-GAt" id="rxC-DM-66k"/>
+                        <outlet property="jobTitleTextField" destination="DAP-Kp-M1L" id="7r5-jl-vpu"/>
+                        <outlet property="locationTextField" destination="d5J-Lp-Fln" id="aLa-is-h3V"/>
+                        <outlet property="priceTextField" destination="7fU-m4-oi6" id="RsI-RX-ZCR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQM-MK-ge3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
