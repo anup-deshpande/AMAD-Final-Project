@@ -15,6 +15,10 @@ class SearchJobTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var jobLocationLabel: UILabel!
+    
+    func setValue(_ jobObj : job) {
+        self.jobTitleLabel.text = jobObj.title
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -552,7 +552,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQM-MK-ge3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="1641.8719211822661"/>
+            <point key="canvasLocation" x="942" y="1642"/>
+        </scene>
+        <!--Display Job View Controller-->
+        <scene sceneID="J7y-i6-pOQ">
+            <objects>
+                <viewController id="O7v-RT-VcN" customClass="DisplayJobViewController" customModule="Final5280" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nYp-RK-ujS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QQm-J1-P0I"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BxZ-Ig-yu1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="1642"/>
         </scene>
         <!--Search Jobs View Controller-->
         <scene sceneID="mNY-JP-hKF">
@@ -642,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVn-SM-nLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="898.52216748768478"/>
+            <point key="canvasLocation" x="1801" y="899"/>
         </scene>
         <!--Ongoing Jobs View Controller-->
         <scene sceneID="RvG-YU-Ka2">
@@ -669,7 +684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcA-zL-ggs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2554" y="899"/>
+            <point key="canvasLocation" x="2625" y="899"/>
         </scene>
         <!--Your Job Postings View Controller-->
         <scene sceneID="sxd-Zt-Bvw">

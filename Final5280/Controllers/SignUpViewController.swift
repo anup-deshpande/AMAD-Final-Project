@@ -114,11 +114,7 @@ class SignUpViewController: UIViewController {
                 print(error)
             }
         }
-        
-        
-    }
-    
-    
+    }    
 }
 
 
