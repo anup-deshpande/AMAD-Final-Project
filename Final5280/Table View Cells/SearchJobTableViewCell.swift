@@ -1,0 +1,29 @@
+//
+//  SearchJobTableViewCell.swift
+//  Final5280
+//
+//  Created by Adwait Tathe on 12/7/19.
+//  Copyright © 2019 Anup Deshpande. All rights reserved.
+//
+
+import UIKit
+
+class SearchJobTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var jobTitleLabel: UILabel!
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var jobLocationLabel: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

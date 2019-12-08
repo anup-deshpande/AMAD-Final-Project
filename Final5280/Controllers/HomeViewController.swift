@@ -10,10 +10,8 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController {
-
     let transition = SlideInTransition()
     var topView: UIView?
-        
     @IBOutlet weak var addJobButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -58,6 +56,7 @@ class HomeViewController: UIViewController {
             
             present(loginVC, animated: true)
             break
+        
             
         case .jobPostings:
             self.title = "Job Postings"

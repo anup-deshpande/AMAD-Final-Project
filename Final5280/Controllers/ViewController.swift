@@ -50,9 +50,7 @@ class ViewController: UIViewController {
                 if(error == nil)
                 {
                     guard let strongSelf = self else { return }
-                    print("USER SIGNED IN");
                     self!.performSegue(withIdentifier: "LoginToHomeSeague", sender: nil)
-                    
                 }
                 else
                 {

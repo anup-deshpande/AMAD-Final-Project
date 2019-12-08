@@ -247,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPC-Qh-7oI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="899"/>
+            <point key="canvasLocation" x="920.79999999999995" y="898.52216748768478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jbk-cv-BxA">
@@ -588,24 +588,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqf-0r-Q3M">
-                                <rect key="frame" x="140" y="395.66666666666669" width="95" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="162" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kJQ-TG-IWa">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchJobTableViewCell" rowHeight="162" id="5JO-zt-X5b" customClass="SearchJobTableViewCell" customModule="Final5280" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="162"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5JO-zt-X5b" id="u6a-bt-KCE" userLabel="searcJobCell">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaQ-ac-PSI">
+                                                    <rect key="frame" x="25" y="51.333333333333336" width="325" height="21.000000000000007"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5g-vo-OeK">
+                                                    <rect key="frame" x="25" y="87.333333333333329" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-nB-JDc">
+                                                    <rect key="frame" x="279" y="118.33333333333331" width="71" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilC-AW-0LH">
+                                                    <rect key="frame" x="25" y="15.999999999999998" width="325" height="20.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.329999999999998" id="XLE-K2-ffc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JaQ-ac-PSI" secondAttribute="trailing" constant="10" id="5st-8d-612"/>
+                                                <constraint firstItem="c3a-nB-JDc" firstAttribute="leading" secondItem="u6a-bt-KCE" secondAttribute="leadingMargin" constant="264" id="8qs-UN-edk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="c3a-nB-JDc" secondAttribute="trailing" constant="10" id="WtS-Nq-kFH"/>
+                                                <constraint firstItem="x5g-vo-OeK" firstAttribute="leading" secondItem="u6a-bt-KCE" secondAttribute="leadingMargin" constant="10" id="XlO-Of-JEQ"/>
+                                                <constraint firstItem="JaQ-ac-PSI" firstAttribute="leading" secondItem="u6a-bt-KCE" secondAttribute="leadingMargin" constant="10" id="aBT-q2-2zj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="x5g-vo-OeK" secondAttribute="trailing" constant="10" id="aSA-Ym-tZ0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="c3a-nB-JDc" secondAttribute="bottom" constant="11.67" id="g3S-or-c3j"/>
+                                                <constraint firstItem="ilC-AW-0LH" firstAttribute="top" secondItem="u6a-bt-KCE" secondAttribute="topMargin" constant="5" id="h7p-id-9kc"/>
+                                                <constraint firstItem="ilC-AW-0LH" firstAttribute="leading" secondItem="u6a-bt-KCE" secondAttribute="leadingMargin" constant="10" id="kTQ-n3-U1Q"/>
+                                                <constraint firstItem="JaQ-ac-PSI" firstAttribute="top" secondItem="ilC-AW-0LH" secondAttribute="bottom" constant="15" id="nhe-AI-EoQ"/>
+                                                <constraint firstItem="c3a-nB-JDc" firstAttribute="top" secondItem="x5g-vo-OeK" secondAttribute="bottom" constant="10" id="rD1-Xk-Ndo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ilC-AW-0LH" secondAttribute="trailing" constant="10" id="uBj-Rn-6SG"/>
+                                                <constraint firstItem="x5g-vo-OeK" firstAttribute="top" secondItem="JaQ-ac-PSI" secondAttribute="bottom" constant="15" id="v2I-WY-fbh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="c3a-nB-JDc" id="xzG-Qh-BcC"/>
+                                            <outlet property="jobLocationLabel" destination="JaQ-ac-PSI" id="Hhg-RS-qnf"/>
+                                            <outlet property="jobTitleLabel" destination="ilC-AW-0LH" id="IN9-nv-nbH"/>
+                                            <outlet property="priceLabel" destination="x5g-vo-OeK" id="fKr-Ry-yAX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sqf-0r-Q3M" firstAttribute="centerX" secondItem="Pyl-cz-WDA" secondAttribute="centerX" id="BsF-FG-l6o"/>
-                            <constraint firstItem="sqf-0r-Q3M" firstAttribute="centerY" secondItem="Pyl-cz-WDA" secondAttribute="centerY" id="Foz-h8-obL"/>
+                            <constraint firstItem="kJQ-TG-IWa" firstAttribute="trailing" secondItem="Bf7-97-LsU" secondAttribute="trailing" id="BE9-5s-HE4"/>
+                            <constraint firstItem="kJQ-TG-IWa" firstAttribute="top" secondItem="Bf7-97-LsU" secondAttribute="top" id="DLd-ce-ZcW"/>
+                            <constraint firstAttribute="bottom" secondItem="kJQ-TG-IWa" secondAttribute="bottom" id="e7b-d1-hua"/>
+                            <constraint firstItem="kJQ-TG-IWa" firstAttribute="leading" secondItem="Bf7-97-LsU" secondAttribute="leading" id="sy0-aF-TQE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bf7-97-LsU"/>
                     </view>
+                    <connections>
+                        <outlet property="searchJobTableView" destination="kJQ-TG-IWa" id="GRY-aM-dVX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVn-SM-nLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="899"/>
+            <point key="canvasLocation" x="1800.8" y="898.52216748768478"/>
         </scene>
         <!--Ongoing Jobs View Controller-->
         <scene sceneID="RvG-YU-Ka2">

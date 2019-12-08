@@ -78,13 +78,11 @@ class SignUpViewController: UIViewController {
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true)
-            
         }
     }
     
     @IBAction func signUp(_ sender: Any) {
-        
-        
+   
         let user = User()
         user.email = email.text!
         user.firstName = firstName.text!
@@ -108,7 +106,6 @@ class SignUpViewController: UIViewController {
                         }
                         
                     }
-                    
                 }
             }
             else
@@ -134,8 +131,6 @@ extension SignUpViewController : UIImagePickerControllerDelegate , UINavigationC
             profilePicture.image = image
             self.data = (profilePicture.image?.pngData())!
             self.metaData.contentType = "image/png"
-            
-            
         }
         dismiss(animated: true, completion: nil)
         
