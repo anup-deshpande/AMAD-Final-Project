@@ -157,6 +157,7 @@
 				76A9DAEB2386356100F73A7D /* Frameworks */,
 				76A9DAEC2386356100F73A7D /* Resources */,
 				26098A9B24A64C0ECC0509FD /* [CP] Embed Pods Frameworks */,
+				BA4462896CB7585B00C9C793 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +253,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Final5280/Pods-Final5280-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA4462896CB7585B00C9C793 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Final5280/Pods-Final5280-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Final5280/Pods-Final5280-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Final5280/Pods-Final5280-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

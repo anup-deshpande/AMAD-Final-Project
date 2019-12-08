@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "LoginToHomeSeague", sender: nil)
         }

@@ -31,12 +31,46 @@ class SignUpViewController: UIViewController {
         email.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
+        password.isSecureTextEntry = true;
+        confirmPassword.isSecureTextEntry = true;
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped(gesture:)))
         profilePicture.addGestureRecognizer(tapGesture)
         profilePicture.isUserInteractionEnabled = true
         self.ref = Database.database().reference()
         
-        
+    }
+    
+    func validation() -> Bool
+    {
+        var flag = true
+        if(firstName.text == ""){
+            print("Email Cannot be empty");
+            flag = false
+        }
+        if(lastName.text == ""){
+            print("Last Name Cannot be empty");
+            flag = false
+        }
+        if(email.text == "")
+        {
+            print("Password Cannot be empty");
+            flag = false
+        }
+        if(password.text == "")
+        {
+            print("Confirrm Password Cannot be empty");
+            flag = false
+        }
+        if(confirmPassword.text == "")
+        {
+            print("Confirrm Password Cannot be empty");
+            flag = false
+        }
+        if(password.text != confirmPassword.text)
+        {
+            flag = false;
+        }
+        return flag
     }
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
@@ -49,11 +83,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-        print(firstName.text!);
-        print(lastName.text!);
-        print(email.text!);
-        print(password.text!);
-        print(confirmPassword.text!);
+        
         
         let user = User()
         user.email = email.text!
@@ -72,10 +102,6 @@ class SignUpViewController: UIViewController {
                         if(result != nil){
                             user.userId = result?.user.uid
                             self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
-                            
-                            
-                            
-                            
                         }
                         if(error != nil){
                             print(error!)
