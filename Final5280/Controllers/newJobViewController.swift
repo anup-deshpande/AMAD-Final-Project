@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GooglePlaces
+import CoreLocation
 
 class newJobViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class newJobViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var commentsTextField: UITextField!
     
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,11 +32,16 @@ class newJobViewController: UIViewController {
         priceTextField.delegate = self
         commentsTextField.delegate = self
         
+        // Set Minimum date to today in the datepicker
+        DatePicker.minimumDate = Date()
         
         // Add tap gesture to clickImage
         let tapClickImage = UITapGestureRecognizer(target: self, action: #selector(tappedClickImage))
         clickImage.isUserInteractionEnabled = true
         clickImage.addGestureRecognizer(tapClickImage)
+        
+        //Initialize firebase database reference
+        self.ref = Database.database().reference()
         
         
     }
@@ -68,16 +76,30 @@ class newJobViewController: UIViewController {
         // Check for input validity
         if isEverythingValid(){
             
+            // TODO: Store the image in Firebase storage
+            
+            
+            // TODO: Store new job in database
+        
+            let newJob: [String: Any?] = [
+                "title": self.jobTitleTextField.text!,
+                "description": self.jobDescTextField.text!,
+                "expectedPrice": self.priceTextField.text!,
+                "date": "\(self.DatePicker.date)",
+                "location": self.locationTextField.text!,
+                "comment": self.commentsTextField.text ?? ""
+            ]
+            
+            
+            self.ref = ref.child("jobs")
+            self.ref.childByAutoId().setValue(newJob)
+            
+            
+            // TODO: Go back to previous screen
+            
         }else{
             return
         }
-        
-        // TODO: Store the image in Firebase storage
-        
-        // TODO: Store new job in database
-        
-        
-        // TODO: Go back to previous screen
     }
     
     func isEverythingValid() -> Bool{
