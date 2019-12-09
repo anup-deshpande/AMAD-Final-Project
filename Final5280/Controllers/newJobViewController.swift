@@ -123,28 +123,28 @@ class newJobViewController: UIViewController {
         
         if jobTitleTextField.text! == "" {
             self.jobTitleTextField.layer.borderWidth = 1.0
-            self.jobTitleTextField.layer.borderColor =  colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.jobTitleTextField.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
             self.jobTitleTextField.layer.cornerRadius = 7
             flag = false
         }
         
         if jobDescTextField.text! == "" {
             self.jobDescTextField.layer.borderWidth = 1.0
-            self.jobDescTextField.layer.borderColor =  colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.jobDescTextField.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
             self.jobDescTextField.layer.cornerRadius = 7
             flag = false
         }
         
         if priceTextField.text! == "" {
             self.priceTextField.layer.borderWidth = 1.0
-            self.priceTextField.layer.borderColor =  colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.priceTextField.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
             self.priceTextField.layer.cornerRadius = 7
             flag = false
         }
         
         if locationTextField.text! == "" {
             self.locationTextField.layer.borderWidth = 1.0
-            self.locationTextField.layer.borderColor =  colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.locationTextField.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
             self.locationTextField.layer.cornerRadius = 7
             flag = false
         }

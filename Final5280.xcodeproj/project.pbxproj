@@ -145,11 +145,8 @@
 				76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */,
 				76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */,
 				7633A587239A256200260885 /* newJobViewController.swift */,
-<<<<<<< HEAD
 				B9B57996239D3F78009CCC7B /* DisplayJobViewController.swift */,
-=======
-				76748BD5239EA99800735369 /* JobDescriptionViewController.swift */,
->>>>>>> 194f16d4bbecfb375c680d2d6aabac2e6cafcaea
+				76748BD5239EA99800735369 /* JobDescriptionViewController.swift */
 			);
 			path = Controllers;
 			sourceTree = "<group>";
