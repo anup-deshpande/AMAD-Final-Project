@@ -107,10 +107,10 @@ class newJobViewController: UIViewController {
             
             // Store new job in users created job pool
             userRef.child("\(newRecordRef.key!)").setValue(newJob)
-            
+
             // Store new job in general jobs pool
             newRecordRef.setValue(newJob)
-            
+
             // Go back to previous screen
             navigationController?.popViewController(animated: true)
         }else{

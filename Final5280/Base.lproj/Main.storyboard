@@ -871,7 +871,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobPostingsCell" rowHeight="105" id="sgh-cm-E3L">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobPostingsCell" rowHeight="105" id="sgh-cm-E3L" customClass="yourJobPostingsTableViewCell" customModule="Final5280" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sgh-cm-E3L" id="IvL-C0-YcM">
@@ -910,6 +910,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="6Jv-6y-1HW" secondAttribute="trailing" id="wqs-BP-vHG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="iFl-5v-b24" id="lWW-2c-1cG"/>
+                                            <outlet property="jobTitleLabel" destination="gYa-PE-HYq" id="f0F-bK-uE4"/>
+                                            <outlet property="priceLabel" destination="6Jv-6y-1HW" id="mVu-RJ-yBh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -930,7 +935,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hu0-hZ-5UT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357.5999999999999" y="898.52216748768478"/>
+            <point key="canvasLocation" x="3460" y="899"/>
+        </scene>
+        <!--Job Description View Controller-->
+        <scene sceneID="qpQ-zE-KGE">
+            <objects>
+                <viewController storyboardIdentifier="JobDescriptionViewController" id="wsS-3R-7OF" customClass="JobDescriptionViewController" customModule="Final5280" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1y8-Ke-hwF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QRt-x4-rrf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ofp-ZD-FSk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GcQ-p9-EBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3460" y="1642"/>
         </scene>
     </scenes>
     <resources>
