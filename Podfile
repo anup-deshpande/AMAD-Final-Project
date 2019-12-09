@@ -14,5 +14,6 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'GooglePlaces'
+pod 'Kingfisher'
 
 end

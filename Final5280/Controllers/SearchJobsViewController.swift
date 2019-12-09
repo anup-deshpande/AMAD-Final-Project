@@ -14,12 +14,9 @@ class SearchJobsViewController: UIViewController {
     @IBOutlet weak var searchJobTableView: UITableView!
     var ref: DatabaseReference!
     var jobList : [job] = []
+    var jobObj : job? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        let jb = job()
-        jb.title = "asd"
-        jb.description = "sddsfsd"
-        self.jobList.append(jb)
         ref = Database.database().reference()
         searchJobTableView.delegate = self
         searchJobTableView.dataSource = self
@@ -28,39 +25,42 @@ class SearchJobsViewController: UIViewController {
     
     func readJobList()
     {
-        self.ref.child("jobs").observe(DataEventType.value) { (snapshot) in
-            
+        self.ref.child("jobs").observe(DataEventType.value) { (snapshot) in  
+            self.jobList = []
             for child in snapshot.children
             {
                 if let childSnapshot = child as? DataSnapshot{
-                    let data1 = childSnapshot.value(forKey: "title")
-                    let data2 = childSnapshot.value(forKey: "description")
-                    print(data1)
-                    
+                    let dict = childSnapshot.value as? [String: AnyObject]
+                    let jb = job()
+                    jb.id = "\(dict!["id"]!)"
+                    jb.comments = "\(dict!["comment"]!)"
+                    jb.date = "\(dict!["date"]!)"
+                    jb.expectedPrice = "\(dict!["expectedPrice"]!)"
+                    jb.title = "\(dict!["title"]!)"
+                    jb.description = "\(dict!["description"]!)"
+                    jb.location = "\(dict!["location"]!)"
+                    self.jobList.append(jb);
                 }
-                
             }
             self.searchJobTableView.reloadData();
-//            if let actulajoblistDB = joblistDB{
-//                for jobObj in actulajoblistDB{
-//                    let jb = job()
-//                    jb.title = jobObj.title
-//                    jb.description = jobObj.description
-//                    self.jobList.append(jb);
-//                }
-//                self.searchJobTableView.reloadData();
-//            }
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! DisplayJobViewController
+        vc.job = self.jobObj
     }
     
 }
 extension SearchJobsViewController : UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.jobObj = self.jobList[indexPath.row]
+        performSegue(withIdentifier: "seachJobToJobDisplaySeague", sender: self)
+        
+    }
 }
 
 extension SearchJobsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         return jobList.count
     }
     

@@ -7,24 +7,47 @@
 //
 
 import UIKit
+import Kingfisher
+import Firebase
 
 class DisplayJobViewController: UIViewController {
 
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var requesterNameLabel: UILabel!
+    @IBOutlet weak var jobImage: UIImageView!
+    var job : job!
+    var ref: DatabaseReference!
+    @IBOutlet weak var bidPrice: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadJobDetails()
+        self.ref = Database.database().reference()
+    }
+    @IBAction func submit(_ sender: Any) {
+        let userId = Auth.auth().currentUser?.uid
+        let bid = bidPrice.text
+        let newJobBid : [String: Any?] = [
+            "id" : self.job.id!,
+            "title": self.job.title!,
+            "description": self.job.description!,
+            "expectedPrice": self.job.expectedPrice!,
+            "date": "\(self.job.date)",
+            "location": "\(self.job.location)",
+            "comment": "\(self.job.comments)"
+        ]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadJobDetails()
+    {
+        let url = "https://firebasestorage.googleapis.com/v0/b/easydollardb.appspot.com/o/userProfile%2F9ED8C2B2-70B1-43B4-A1D4-A0513DF1796F?alt=media&token=1a7ddcb4-3b4c-42aa-972f-dc3e071ad871"
+        commentLabel.text = self.job.comments
+        locationLabel.text = self.job.location
+        dateLabel.text = self.job.date
+        priceLabel.text = self.job.expectedPrice
+        jobImage.kf.setImage(with: URL(string: url))
+        //requesterNameLabel.text = self.job.requesterName
     }
-    */
-
 }
