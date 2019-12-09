@@ -99,7 +99,18 @@ class SignUpViewController: UIViewController {
                     Auth.auth().createUser(withEmail: user.email!, password: self.password.text!) { (result, error) in
                         if(result != nil){
                             user.userId = result?.user.uid
+                            
+                            // Update new user on database
                             self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
+                            
+                            // Change name in firebase Authentication
+                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.displayName = user.firstName! + " " + user.lastName!
+                            changeRequest?.commitChanges { (error) in
+                                if error != nil{
+                                    print(error)
+                                }
+                            }
                         }
                         if(error != nil){
                             print(error!)

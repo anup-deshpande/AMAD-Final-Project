@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7633A588239A256200260885 /* newJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633A587239A256200260885 /* newJobViewController.swift */; };
+		76748BD2239E2BB500735369 /* yourJobPostingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD1239E2BB500735369 /* yourJobPostingsTableViewCell.swift */; };
+		76748BD4239E2F0600735369 /* job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD3239E2F0600735369 /* job.swift */; };
+		76748BD6239EA99800735369 /* JobDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD5239EA99800735369 /* JobDescriptionViewController.swift */; };
 		76A9DAF22386356100F73A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF12386356100F73A7D /* AppDelegate.swift */; };
 		76A9DAF42386356100F73A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF32386356100F73A7D /* SceneDelegate.swift */; };
 		76A9DAF62386356100F73A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF52386356100F73A7D /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 		13AAC222800404D5B2E57A72 /* Pods-Final5280.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final5280.debug.xcconfig"; path = "Target Support Files/Pods-Final5280/Pods-Final5280.debug.xcconfig"; sourceTree = "<group>"; };
 		73F85C1AD18ABA82EF51E4FD /* Pods-Final5280.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final5280.release.xcconfig"; path = "Target Support Files/Pods-Final5280/Pods-Final5280.release.xcconfig"; sourceTree = "<group>"; };
 		7633A587239A256200260885 /* newJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newJobViewController.swift; sourceTree = "<group>"; };
+		76748BD1239E2BB500735369 /* yourJobPostingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yourJobPostingsTableViewCell.swift; sourceTree = "<group>"; };
+		76748BD3239E2F0600735369 /* job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = job.swift; sourceTree = "<group>"; };
+		76748BD5239EA99800735369 /* JobDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescriptionViewController.swift; sourceTree = "<group>"; };
 		76A9DAEE2386356100F73A7D /* Final5280.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Final5280.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A9DAF12386356100F73A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76A9DAF32386356100F73A7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				B933C1A5239C952E00F3BD1F /* SearchJobTableViewCell.swift */,
+				76748BD1239E2BB500735369 /* yourJobPostingsTableViewCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				B946B9E623965E3B00FF73F6 /* user.swift */,
+				76748BD3239E2F0600735369 /* job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +143,7 @@
 				76C20093238F910400F0E1F1 /* OngoingJobsViewController.swift */,
 				76C20095238F925200F0E1F1 /* YourJobPostingsViewController.swift */,
 				7633A587239A256200260885 /* newJobViewController.swift */,
+				76748BD5239EA99800735369 /* JobDescriptionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,10 +306,13 @@
 				76A9DAF22386356100F73A7D /* AppDelegate.swift in Sources */,
 				76C20090238F8B1100F0E1F1 /* SearchJobsViewController.swift in Sources */,
 				76C20092238F8C6900F0E1F1 /* HomeViewController.swift in Sources */,
+				76748BD6239EA99800735369 /* JobDescriptionViewController.swift in Sources */,
 				B933C1A6239C952E00F3BD1F /* SearchJobTableViewCell.swift in Sources */,
 				76C2008E238F09E400F0E1F1 /* SlideInTransition.swift in Sources */,
 				B96A56AD23873D170078F98A /* SignUpViewController.swift in Sources */,
 				76A9DAF42386356100F73A7D /* SceneDelegate.swift in Sources */,
+				76748BD2239E2BB500735369 /* yourJobPostingsTableViewCell.swift in Sources */,
+				76748BD4239E2F0600735369 /* job.swift in Sources */,
 				B946B9E723965E3B00FF73F6 /* user.swift in Sources */,
 				76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */,
 			);

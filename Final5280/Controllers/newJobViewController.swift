@@ -22,9 +22,15 @@ class newJobViewController: UIViewController {
     @IBOutlet weak var commentsTextField: UITextField!
     
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
+    
+    // job location
+    var latitude: String?
+    var longtitude: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // Assign all textField delegates
         jobTitleTextField.delegate = self
@@ -42,6 +48,7 @@ class newJobViewController: UIViewController {
         
         //Initialize firebase database reference
         self.ref = Database.database().reference()
+        self.userRef = Database.database().reference()
         
         
     }
@@ -79,24 +86,33 @@ class newJobViewController: UIViewController {
             // TODO: Store the image in Firebase storage
             
             
-            // TODO: Store new job in database
-        
+            
+            self.ref = ref.child("jobs")
+            self.userRef = userRef.child("Users").child("\(Auth.auth().currentUser!.uid)").child("createdJobs")
+            let newRecordRef = self.ref.childByAutoId()
+            
             let newJob: [String: Any?] = [
+                "id" : newRecordRef.key!,
+                "requesterId": Auth.auth().currentUser!.uid,
+                "requesterName": Auth.auth().currentUser!.displayName,
                 "title": self.jobTitleTextField.text!,
                 "description": self.jobDescTextField.text!,
                 "expectedPrice": self.priceTextField.text!,
                 "date": "\(self.DatePicker.date)",
                 "location": self.locationTextField.text!,
+                "lat": self.latitude!,
+                "long": self.longtitude!,
                 "comment": self.commentsTextField.text ?? ""
             ]
             
+            // Store new job in users created job pool
+            userRef.child("\(newRecordRef.key!)").setValue(newJob)
+ 
+            // Store new job in general jobs pool
+            newRecordRef.setValue(newJob)
             
-            self.ref = ref.child("jobs")
-            self.ref.childByAutoId().setValue(newJob)
-            
-            
-            // TODO: Go back to previous screen
-            
+            // Go back to previous screen
+            navigationController?.popViewController(animated: true)
         }else{
             return
         }
@@ -159,7 +175,9 @@ extension newJobViewController: GMSAutocompleteViewControllerDelegate{
         
         locationTextField.text = place.name!
         locationTextField.layer.borderWidth = 0
-        print(place.coordinate)
+        latitude = "\(place.coordinate.latitude)"
+        longtitude = "\(place.coordinate.longitude)"
+        
         
         // Dismiss the GMSAutocompleteViewController when something is selected
         dismiss(animated: true, completion: nil)
