@@ -90,6 +90,9 @@ PODS:
   - Kingfisher (5.11.0):
     - Kingfisher/Core (= 5.11.0)
   - Kingfisher/Core (5.11.0)
+  - KRActivityIndicatorView (3.0.4)
+  - KRProgressHUD (3.4.4):
+    - KRActivityIndicatorView (= 3.0.4)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -105,6 +108,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GooglePlaces
   - Kingfisher
+  - KRProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -126,6 +130,8 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - Kingfisher
+    - KRActivityIndicatorView
+    - KRProgressHUD
     - leveldb-library
     - nanopb
 
@@ -148,9 +154,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
+  KRActivityIndicatorView: 549db10b9578d58bac73db063d8b544e8970f7f2
+  KRProgressHUD: c3b9a48a0ee4824ea13212ac3f1efa50dca021e3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: d6a8d6aa3fef93fc91e511818f48c2c09a555177
+PODFILE CHECKSUM: c532c12a0d791b9e27064e0f4c71aea139dc3f96
 
 COCOAPODS: 1.8.4

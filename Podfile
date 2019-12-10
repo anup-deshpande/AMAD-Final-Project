@@ -15,5 +15,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'GooglePlaces'
 pod 'Kingfisher'
+pod "KRProgressHUD"
 
 end

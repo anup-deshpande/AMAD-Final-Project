@@ -83,6 +83,7 @@ class YourJobPostingsViewController: UIViewController {
 // MARK: TableView Delegate Methods
 extension YourJobPostingsViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at:indexPath, animated: true)
         print(indexPath.row)
         let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewController")
         navigationController?.pushViewController(jobDescVC!, animated: true)
