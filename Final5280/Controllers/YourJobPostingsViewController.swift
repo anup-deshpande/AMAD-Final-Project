@@ -65,6 +65,8 @@ class YourJobPostingsViewController: UIViewController {
                 jobObject.expectedPrice = dict["expectedPrice"] as? String
                 jobObject.location = dict["location"] as? String
                 jobObject.id = dict["id"] as? String
+                jobObject.date = dict["date"] as? String
+                jobObject.comments = dict["comment"] as? String
                 self.results.append(jobObject)
             }
             
@@ -83,9 +85,10 @@ class YourJobPostingsViewController: UIViewController {
 // MARK: TableView Delegate Methods
 extension YourJobPostingsViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewController")
-        navigationController?.pushViewController(jobDescVC!, animated: true)
+        let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewController") as! JobDescriptionViewController
+        jobDescVC.jobToDisplay = results[indexPath.row]
+        navigationController?.pushViewController(jobDescVC, animated: true)
+        
     }
 }
 

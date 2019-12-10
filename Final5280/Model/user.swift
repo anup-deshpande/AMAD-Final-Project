@@ -15,6 +15,7 @@ class User{
     var lastName : String?
     var email : String?
     var profilePicture : String?
+    var bidPrice: String?
     
     init(_ id: String,_ firstName: String, _ lastName : String , _ email : String , _ profilePicture: String) {
         self.userId = id
