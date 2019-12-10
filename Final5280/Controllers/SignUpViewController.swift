@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import KRProgressHUD
 
 class SignUpViewController: UIViewController {
     
@@ -82,7 +83,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-   
+        
         let user = User()
         user.email = email.text!
         user.firstName = firstName.text!
@@ -110,6 +111,8 @@ class SignUpViewController: UIViewController {
                                 if error != nil{
                                     print(error)
                                 }
+                                KRProgressHUD.showSuccess(withMessage: "Signed up successfully")
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                         if(error != nil){

@@ -23,10 +23,13 @@ class newJobViewController: UIViewController {
     
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
-    
+    let storage = Storage.storage()
+    var data = Data()
+    var metaData = StorageMetadata()
     // job location
     var latitude: String?
     var longtitude: String?
+    var isJobPhoto: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,7 @@ class newJobViewController: UIViewController {
         jobDescTextField.delegate = self
         priceTextField.delegate = self
         commentsTextField.delegate = self
-        
+        self.isJobPhoto = false
         // Set Minimum date to today in the datepicker
         DatePicker.minimumDate = Date()
         
@@ -64,15 +67,11 @@ class newJobViewController: UIViewController {
             imagePicker.sourceType = .camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-            
         }
-        
-        
     }
     
     @IBAction func didTapLocationText(_ sender: UITextField) {
         locationTextField.resignFirstResponder()
-        
         // Show autocomplete controller
         let acController = GMSAutocompleteViewController()
         acController.delegate = self
@@ -82,39 +81,77 @@ class newJobViewController: UIViewController {
     @IBAction func didTapSubmit(_ sender: UIButton) {
         // Check for input validity
         if isEverythingValid(){
-            
-            // TODO: Store the image in Firebase storage
-            
-            
-            
-            self.ref = ref.child("jobs")
-            self.userRef = userRef.child("Users").child("\(Auth.auth().currentUser!.uid)").child("createdJobs")
-            let newRecordRef = self.ref.childByAutoId()
-            
-            let newJob: [String: Any?] = [
-                "id" : newRecordRef.key!,
-                "requesterId": Auth.auth().currentUser!.uid,
-                "requesterName": Auth.auth().currentUser!.displayName,
-                "title": self.jobTitleTextField.text!,
-                "description": self.jobDescTextField.text!,
-                "expectedPrice": self.priceTextField.text!,
-                "date": "\(self.DatePicker.date)",
-                "location": self.locationTextField.text!,
-                "lat": self.latitude!,
-                "long": self.longtitude!,
-                "comment": self.commentsTextField.text ?? ""
-            ]
-            
-            // Store new job in users created job pool
-            userRef.child("\(newRecordRef.key!)").setValue(newJob)
-
-            // Store new job in general jobs pool
-            newRecordRef.setValue(newJob)
-
-            // Go back to previous screen
-            navigationController?.popViewController(animated: true)
+            if(self.isJobPhoto!)
+            {
+                // TODO: Store the image in Firebase storage
+                let jobRef = self.storage.reference().child("jobImage").child(UUID().uuidString)
+                
+                jobRef.putData(self.data, metadata: self.metaData) { (metadata, error) in
+                    if error == nil
+                    {
+                        print("success")
+                        
+                        jobRef.downloadURL { (url, error) in
+                            self.ref = self.ref.child("jobs")
+                            self.userRef = self.userRef.child("Users").child("\(Auth.auth().currentUser!.uid)").child("createdJobs")
+                            let newRecordRef = self.ref.childByAutoId()
+                            let newJob: [String: Any?] = [
+                                "id" : newRecordRef.key!,
+                                "requesterId": Auth.auth().currentUser!.uid,
+                                "requesterName": Auth.auth().currentUser!.displayName,
+                                "image" : url?.absoluteString ?? "",
+                                "title": self.jobTitleTextField.text!,
+                                "description": self.jobDescTextField.text!,
+                                "expectedPrice": self.priceTextField.text!,
+                                "date": "\(self.DatePicker.date)",
+                                "location": self.locationTextField.text!,
+                                "lat": self.latitude!,
+                                "long": self.longtitude!,
+                                "comment": self.commentsTextField.text ?? ""
+                            ]
+                            // Store new job in users created job pool
+                            self.userRef.child("\(newRecordRef.key!)").setValue(newJob)
+                            // Store new job in general jobs pool
+                            newRecordRef.setValue(newJob)
+                            // Go back to previous screen
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    else
+                    {
+                        print("ERROR")
+                        print(error)
+                    }
+                }
+            }
+            else
+            {
+                self.ref = self.ref.child("jobs")
+                self.userRef = self.userRef.child("Users").child("\(Auth.auth().currentUser!.uid)").child("createdJobs")
+                let newRecordRef = self.ref.childByAutoId()
+                let newJob: [String: Any?] = [
+                    "id" : newRecordRef.key!,
+                    "requesterId": Auth.auth().currentUser!.uid,
+                    "requesterName": Auth.auth().currentUser!.displayName,
+                    "image" : "",
+                    "title": self.jobTitleTextField.text!,
+                    "description": self.jobDescTextField.text!,
+                    "expectedPrice": self.priceTextField.text!,
+                    "date": "\(self.DatePicker.date)",
+                    "location": self.locationTextField.text!,
+                    "lat": self.latitude!,
+                    "long": self.longtitude!,
+                    "comment": self.commentsTextField.text ?? ""
+                ]
+                // Store new job in users created job pool
+                self.userRef.child("\(newRecordRef.key!)").setValue(newJob)
+                // Store new job in general jobs pool
+                newRecordRef.setValue(newJob)
+                // Go back to previous screen
+                self.navigationController?.popViewController(animated: true)
+            }
         }else{
-            return
+            return;
         }
     }
     
@@ -161,9 +198,11 @@ extension newJobViewController:  UIImagePickerControllerDelegate , UINavigationC
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         {
             clickImage.image = image
+            self.data = (clickImage.image?.pngData())!
+            self.metaData.contentType = "image/png"
+            self.isJobPhoto = true
         }
         dismiss(animated: true, completion: nil)
-        
     }
 }
 
@@ -195,7 +234,6 @@ extension newJobViewController: GMSAutocompleteViewControllerDelegate{
     
     
 }
-
 
 // MARK: TextField Delegate
 extension newJobViewController: UITextFieldDelegate{

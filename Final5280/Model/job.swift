@@ -15,10 +15,12 @@ class job{
     var description: String?
     var title: String?
     var date: String?
+    var image : String?
     var location: String?
     var expectedPrice: String?
     var comments: String?
-    
+    var latitiude : String?
+    var longitude : String?
     init() {
     }
 }

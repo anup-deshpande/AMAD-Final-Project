@@ -39,6 +39,10 @@ class SearchJobsViewController: UIViewController {
                     jb.title = "\(dict!["title"]!)"
                     jb.description = "\(dict!["description"]!)"
                     jb.location = "\(dict!["location"]!)"
+                    jb.requesterId = "\(dict!["requesterId"]!)"
+                    jb.requesterName = "\(dict!["requesterName"]!)"
+                    jb.latitiude = "\(dict!["lat"]!)"
+                    jb.longitude =  "\(dict!["long"]!)"
                     self.jobList.append(jb);
                 }
             }
@@ -53,6 +57,7 @@ class SearchJobsViewController: UIViewController {
 }
 extension SearchJobsViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.jobObj = self.jobList[indexPath.row]
         performSegue(withIdentifier: "seachJobToJobDisplaySeague", sender: self)
         
