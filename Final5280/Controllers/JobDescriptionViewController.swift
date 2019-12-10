@@ -21,6 +21,7 @@ class JobDescriptionViewController: UIViewController {
     
     var jobToDisplay: job?
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
     var observeReference: DatabaseReference!
     
     var users = [User]()
@@ -36,6 +37,7 @@ class JobDescriptionViewController: UIViewController {
         
         // Initialize firebase database reference
         ref = Database.database().reference()
+        userRef = Database.database().reference()
         
         // Setup Listener for interested users
         let userID = Auth.auth().currentUser?.uid
@@ -52,6 +54,7 @@ class JobDescriptionViewController: UIViewController {
                 guard let dict = snap.value as? [String:Any?] else{return}
                 
                 let user = User()
+                user.userId = snap.key
                 user.bidPrice = dict["bidPrice"] as? String
                 let name = dict["userName"] as? String
                 user.firstName = "\(name!.split(separator: " ").first!)"
@@ -66,13 +69,44 @@ class JobDescriptionViewController: UIViewController {
     
     func setupValues(){
         self.title = jobToDisplay?.title!
-        let url = URL(string: "https://media.wired.com/photos/5cbf9aec16162c660a9e7a86/125:94/w_2375,h_1786,c_limit/Tesla-Self-Driving-893128080.jpg")
-        jobImage.kf.setImage(with: url)
+        
+        if let stringURL = jobToDisplay!.image {
+            let url = URL(string: stringURL)
+            jobImage.kf.setImage(with: url)
+        }
         
         reqNameLabel.text = jobToDisplay?.title!
         dateLabel.text = "\(jobToDisplay!.date!.split(separator: " ").first!)"
         locationLabel.text = jobToDisplay?.location!
         commentsLabel.text = jobToDisplay?.comments!
+        
+    }
+    
+    
+    func didSelectUser(at index: Int){
+        print(users[index].userId)
+        let userID = Auth.auth().currentUser?.uid
+        
+        // Add selected user in created jobs
+        ref = Database.database().reference()
+        ref = ref.child("Users").child(userID!).child("createdJobs").child("\(jobToDisplay!.id!)")
+        ref.child("acceptedUserID").setValue("\(users[index].userId!)")
+        ref.child("acceptedUserName").setValue("\(users[index].firstName!) \(users[index].lastName!)")
+        
+        // TODO: Update price
+        
+        // Remove Interested Users
+        ref = Database.database().reference()
+        ref = ref.child("Users").child(userID!).child("createdJobs").child("\(jobToDisplay!.id!)").child("InterestedUsers")
+        ref.removeValue()
+        
+        
+        // TODO: Copy new job object to ongoing jobs of selected user
+        
+        // TODO: Remove job from job pool
+        
+        // TODO: Update UI
+        
         
     }
 
@@ -82,6 +116,7 @@ class JobDescriptionViewController: UIViewController {
 extension JobDescriptionViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.didSelectUser(at: indexPath.row)
     }
 }
 
@@ -92,7 +127,7 @@ extension JobDescriptionViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "interestedUsersCell", for: indexPath) as! interestedUserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "interestedUsersCell", for: indexPath) as! interestedUserTableViewCell
         
         cell.userNameLabel.text = users[indexPath.row].firstName! + " " + users[indexPath.row].lastName!
         cell.bidPriceLabel.text = "$" + users[indexPath.row].bidPrice!

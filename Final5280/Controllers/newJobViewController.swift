@@ -133,7 +133,6 @@ class newJobViewController: UIViewController {
                     "id" : newRecordRef.key!,
                     "requesterId": Auth.auth().currentUser!.uid,
                     "requesterName": Auth.auth().currentUser!.displayName,
-                    "image" : "",
                     "title": self.jobTitleTextField.text!,
                     "description": self.jobDescTextField.text!,
                     "expectedPrice": self.priceTextField.text!,
