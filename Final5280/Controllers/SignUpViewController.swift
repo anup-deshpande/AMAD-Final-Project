@@ -75,7 +75,7 @@ class SignUpViewController: UIViewController {
             self.password.layer.cornerRadius = 7
             flag = false
         }
-
+        
         if confirmPassword.text! == "" {
             self.confirmPassword.layer.borderWidth = 1.0
             self.confirmPassword.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
@@ -115,18 +115,22 @@ class SignUpViewController: UIViewController {
             "phone" : "1111111111",
             "email" : userObj.email!
         ]
+        var customerId : String?
         AF.request(signUpAPI, method: .post , parameters: parameters , encoding: JSONEncoding.default)
             .responseJSON { response in
-//                switch response.result {
-//                case .success(let value):
-//                    
-//                    let json = JSON(vale)
-//                    if json["status"].stringValue == "200"{
-//                        let customerId = json["customerId"].stringValue
-//                        
-//                    }
-//                }
-                
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    if json["status"].stringValue == "200"{
+                        customerId = json["customerId"].stringValue
+                        self.ref.child("Users").child(userObj.userId!).child("braintreeId").setValue(customerId)
+                    }
+                    break
+                    
+                case .failure(let error):
+                    print(error)
+                    break
+                }
         }
     }
     
@@ -139,13 +143,13 @@ class SignUpViewController: UIViewController {
             user.firstName = firstName.text!
             user.lastName = lastName.text!
             user.profilePicture = ""
+            
             Auth.auth().createUser(withEmail: user.email!, password: self.password.text!) { (result, error) in
                 if(result != nil){
                     user.userId = result?.user.uid
                     // Update new user on database
                     self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "email" : user.email])
 
-                    signUptoBraintree(user);
                     // Change name in firebase Authentication
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = user.firstName! + " " + user.lastName!
@@ -165,9 +169,8 @@ class SignUpViewController: UIViewController {
                 if error == nil
                 {
                     profileRef.downloadURL { (url, error) in
-                        user.profilePicture = url?.absoluteString
-
-                        self.ref.child("Users").child(user.userId!).child("profilePicture").setValue(user.profilePicture)
+                        user.profilePicture = url?.absoluteString; self.ref.child("Users").child(user.userId!).child("profilePicture").setValue(user.profilePicture)
+                            self.signUptoBraintree(user);
                     }
                 }
                 else

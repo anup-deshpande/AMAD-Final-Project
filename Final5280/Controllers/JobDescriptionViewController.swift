@@ -79,7 +79,14 @@ class JobDescriptionViewController: UIViewController {
         reqNameLabel.text = jobToDisplay?.title!
         dateLabel.text = "\(jobToDisplay!.date!.split(separator: " ").first!)"
         locationLabel.text = jobToDisplay?.location!
-        commentsLabel.text = jobToDisplay?.comments!
+        if(jobToDisplay?.comments! == "")
+        {
+            commentsLabel.text = "--"
+        }
+        else
+        {
+            commentsLabel.text = jobToDisplay?.comments!
+        }
         priceLabel.text = jobToDisplay?.price!
         
     }
@@ -125,6 +132,7 @@ class JobDescriptionViewController: UIViewController {
             "comment": jobToDisplay?.comments ?? ""
             
         ]
+        
        
         ref.setValue(jobToCopy)
         

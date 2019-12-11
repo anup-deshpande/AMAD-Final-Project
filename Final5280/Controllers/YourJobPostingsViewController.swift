@@ -92,9 +92,17 @@ class YourJobPostingsViewController: UIViewController {
 extension YourJobPostingsViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at:indexPath, animated: true)
+        let job = results[indexPath.row]
+        if (job.acceptedUserName == nil){
         let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewController") as! JobDescriptionViewController
         jobDescVC.jobToDisplay = results[indexPath.row]
         navigationController?.pushViewController(jobDescVC, animated: true)
+            }else{
+            
+            let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewControllerPayment") as! JobDescriptionViewControllerPayment
+           // jobDescVC.jobToDisplay = results[indexPath.row]
+            navigationController?.pushViewController(jobDescVC, animated: true)
+        }
     }
 }
 
