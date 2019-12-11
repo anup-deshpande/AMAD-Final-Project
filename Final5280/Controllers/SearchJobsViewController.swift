@@ -8,19 +8,28 @@
 
 import UIKit
 import Firebase
-
+import CoreLocation
+import MapKit
 class SearchJobsViewController: UIViewController {
-
+    
     @IBOutlet weak var searchJobTableView: UITableView!
     var ref: DatabaseReference!
     var jobList : [job] = []
     var jobObj : job? = nil
+    let locationManager = CLLocationManager()
+    var userLat : CLLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
         searchJobTableView.delegate = self
         searchJobTableView.dataSource = self
-        readJobList();
+        
     }
     
     func readJobList()
@@ -43,14 +52,21 @@ class SearchJobsViewController: UIViewController {
                     jb.requesterName = "\(dict!["requesterName"]!)"
                     jb.latitiude = "\(dict!["lat"]!)"
                     jb.longitude =  "\(dict!["long"]!)"
-                    self.jobList.append(jb);
+                    
+                    let jobLocation = CLLocation(latitude: Double(jb.latitiude!) as! CLLocationDegrees, longitude: Double(jb.longitude!) as! CLLocationDegrees)
+                    let distanceInMeters = self.userLat!.distance(from: jobLocation)
+                    let distanceInMiles = distanceInMeters/(1609.34)
+                    if(distanceInMiles<25 )
+                    {
+                        self.jobList.append(jb);
+                    }
                 }
             }
             self.searchJobTableView.reloadData();
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! DisplayJobViewController
+        let vc = segue.destination as! DisplayJobViewController
         vc.job = self.jobObj
     }
     
@@ -70,9 +86,19 @@ extension SearchJobsViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "searchJobTableViewCell", for: indexPath) as! SearchJobTableViewCell
-        cell.setValue(self.jobList[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchJobTableViewCell", for: indexPath) as! SearchJobTableViewCell
+        cell.setValue(self.jobList[indexPath.row],self.userLat!)
         return cell
+    }
+}
+extension SearchJobsViewController : CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        //let loc  = locations.last!.coordinate;
+        self.userLat = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        readJobList();
+        //print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
 }
 

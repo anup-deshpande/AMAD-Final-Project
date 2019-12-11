@@ -66,5 +66,9 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>You can click pictures for your work</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app wants permission to get your current location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app wants permission to get your current location</string>
 </dict>
 </plist>
