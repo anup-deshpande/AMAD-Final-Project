@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import MapKit
+import SwipeCellKit
 
 class OngoingJobsViewController: UIViewController {
 
@@ -34,6 +36,8 @@ class OngoingJobsViewController: UIViewController {
         ongoingJobsTableView.delegate = self
         ongoingJobsTableView.dataSource = self
         ongoingJobsTableView.refreshControl = refreshControl
+    
+            
     }
     
     
@@ -105,6 +109,7 @@ extension OngoingJobsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ongoingJobTableViewCell", for: indexPath) as! ongoingJobsTableViewCell
+        cell.delegate = self
         
         cell.jobTitleLabel.text = results[indexPath.row].title!
         cell.jobAddressLabel.text = results[indexPath.row].location!
@@ -112,6 +117,51 @@ extension OngoingJobsViewController: UITableViewDataSource{
         cell.dateLabel.text = "\(results[indexPath.row].date!.split(separator: " ").first!)"
         
         return cell
+    }
+    
+    
+}
+
+
+// MARK: Swipe Table View Delegate methods
+extension OngoingJobsViewController:  SwipeTableViewCellDelegate{
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let completedAction = SwipeAction(style: .default, title: "Completed") { action, indexPath in
+            
+            // Job is completed
+            self.ref = Database.database().reference()
+            self.ref = self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("ongoingJobs").child(self.results[indexPath.row].id!)
+            self.ref.child("status").setValue("Completed")
+            
+            
+            self.ref = Database.database().reference()
+            self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("requestedJobs").child(self.results[indexPath.row].id!)
+            self.ref.child("status").setValue("Completed")
+            
+            
+        }
+        
+        let startedAction = SwipeAction(style: .default, title: "Started") { action, indexPath in
+            // Started Working
+            self.ref = Database.database().reference()
+            self.ref = self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("ongoingJobs").child(self.results[indexPath.row].id!)
+            self.ref.child("status").setValue("Working")
+            
+            self.ref = Database.database().reference()
+                       self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("requestedJobs").child(self.results[indexPath.row].id!)
+                       self.ref.child("status").setValue("Working")
+            
+        }
+        
+        completedAction.image = UIImage(systemName: "checkmark.seal")
+        completedAction.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+        
+        startedAction.image = UIImage(systemName: "ellipsis.circle.fill")
+        startedAction.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        
+        return [completedAction,startedAction]
     }
     
     

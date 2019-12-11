@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ongoingJobsTableViewCell: UITableViewCell {
+class ongoingJobsTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var jobTitleLabel: UILabel!
     @IBOutlet weak var jobAddressLabel: UILabel!
