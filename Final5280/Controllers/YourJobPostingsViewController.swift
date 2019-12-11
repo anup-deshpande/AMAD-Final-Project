@@ -68,6 +68,11 @@ class YourJobPostingsViewController: UIViewController {
                 jobObject.date = dict["date"] as? String
                 jobObject.comments = dict["comment"] as? String
                 jobObject.image = dict["image"] as? String
+                jobObject.requesterName = dict["requesterName"] as? String
+                jobObject.requesterId = dict["requesterId"] as? String
+                jobObject.latitiude = dict["latitude"] as? String
+                jobObject.longitude = dict["longitude"] as? String
+                jobObject.description = dict["description"] as? String
                 self.results.append(jobObject)
             }
             

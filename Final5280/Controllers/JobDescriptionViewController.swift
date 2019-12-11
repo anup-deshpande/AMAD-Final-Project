@@ -93,8 +93,10 @@ class JobDescriptionViewController: UIViewController {
         ref = ref.child("Users").child(userID!).child("createdJobs").child("\(jobToDisplay!.id!)")
         
         // Add selected user in created jobs
-        ref.child("acceptedUserID").setValue("\(users[index].userId!)")
+        ref.child("acceptedUserId").setValue("\(users[index].userId!)")
         ref.child("acceptedUserName").setValue("\(users[index].firstName!) \(users[index].lastName!)")
+        jobToDisplay?.acceptedUserId = users[index].userId!
+        jobToDisplay?.acceptedUserName = "\(users[index].firstName!) \(users[index].lastName!)"
         
 
         // Update price
@@ -104,7 +106,27 @@ class JobDescriptionViewController: UIViewController {
         ref.child("InterestedUsers").removeValue()
         
         // TODO: Copy new job object to ongoing jobs of selected user
-        
+        ref = Database.database().reference()
+        ref = ref.child("Users").child(users[index].userId!).child("ongoingJobs").child(jobToDisplay!.id!)
+        let jobToCopy : [String: Any?] = [
+            
+            "id" : jobToDisplay?.id!,
+            "requesterId": jobToDisplay?.requesterId!,
+            "requesterName": jobToDisplay?.requesterName!,
+            "acceptedUserName": jobToDisplay?.acceptedUserName!,
+            "acceptedUserId": jobToDisplay?.acceptedUserId!,
+            "title": jobToDisplay?.title!,
+            "description": jobToDisplay?.description!,
+            "price": jobToDisplay?.price!,
+            "date": jobToDisplay?.date!,
+            "location": jobToDisplay?.location!,
+            "latitude": jobToDisplay?.latitiude!,
+            "longitude": jobToDisplay?.longitude!,
+            "comment": jobToDisplay?.comments ?? ""
+            
+        ]
+       
+        ref.setValue(jobToCopy)
         
         // Remove job from job pool
         ref = Database.database().reference()
