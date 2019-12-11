@@ -67,6 +67,7 @@ class YourJobPostingsViewController: UIViewController {
                 jobObject.id = dict["id"] as? String
                 jobObject.date = dict["date"] as? String
                 jobObject.comments = dict["comment"] as? String
+                jobObject.image = dict["image"] as? String
                 self.results.append(jobObject)
             }
             
