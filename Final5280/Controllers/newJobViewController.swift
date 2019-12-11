@@ -102,7 +102,7 @@ class newJobViewController: UIViewController {
                                 "image" : url?.absoluteString ?? "",
                                 "title": self.jobTitleTextField.text!,
                                 "description": self.jobDescTextField.text!,
-                                "expectedPrice": self.priceTextField.text!,
+                                "price": self.priceTextField.text!,
                                 "date": "\(self.DatePicker.date)",
                                 "location": self.locationTextField.text!,
                                 "lat": self.latitude!,
@@ -135,11 +135,11 @@ class newJobViewController: UIViewController {
                     "requesterName": Auth.auth().currentUser!.displayName,
                     "title": self.jobTitleTextField.text!,
                     "description": self.jobDescTextField.text!,
-                    "expectedPrice": self.priceTextField.text!,
+                    "price": self.priceTextField.text!,
                     "date": "\(self.DatePicker.date)",
                     "location": self.locationTextField.text!,
-                    "lat": self.latitude!,
-                    "long": self.longtitude!,
+                    "latitude": self.latitude!,
+                    "longitude": self.longtitude!,
                     "comment": self.commentsTextField.text ?? ""
                 ]
                 // Store new job in users created job pool

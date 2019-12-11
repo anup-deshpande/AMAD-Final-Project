@@ -62,7 +62,7 @@ class YourJobPostingsViewController: UIViewController {
                 
                 let jobObject = job()
                 jobObject.title = dict["title"] as? String
-                jobObject.expectedPrice = dict["expectedPrice"] as? String
+                jobObject.price = dict["price"] as? String
                 jobObject.location = dict["location"] as? String
                 jobObject.id = dict["id"] as? String
                 jobObject.date = dict["date"] as? String
@@ -103,7 +103,7 @@ extension YourJobPostingsViewController: UITableViewDataSource{
         
         cell.jobTitleLabel.text = results[indexPath.row].title!
         cell.addressLabel.text = results[indexPath.row].location!
-        cell.priceLabel.text = "$\(results[indexPath.row].expectedPrice!)"
+        cell.priceLabel.text = "$\(results[indexPath.row].price!)"
         
         
         return cell

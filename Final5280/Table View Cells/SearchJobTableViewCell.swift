@@ -17,7 +17,7 @@ class SearchJobTableViewCell: UITableViewCell {
     
     func setValue(_ jobObj : job) {
         self.jobTitleLabel.text = jobObj.title
-        self.priceLabel.text = jobObj.expectedPrice
+        self.priceLabel.text = jobObj.price
         self.jobLocationLabel.text = jobObj.location
     }
     override func awakeFromNib() {

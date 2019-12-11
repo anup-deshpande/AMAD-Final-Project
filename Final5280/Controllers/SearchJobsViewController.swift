@@ -35,7 +35,7 @@ class SearchJobsViewController: UIViewController {
                     jb.id = "\(dict!["id"]!)"
                     jb.comments = "\(dict!["comment"]!)"
                     jb.date = "\(dict!["date"]!)"
-                    jb.expectedPrice = "\(dict!["expectedPrice"]!)"
+                    jb.price = "\(dict!["price"]!)"
                     jb.title = "\(dict!["title"]!)"
                     jb.description = "\(dict!["description"]!)"
                     jb.location = "\(dict!["location"]!)"

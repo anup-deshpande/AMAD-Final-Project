@@ -60,7 +60,7 @@ class DisplayJobViewController: UIViewController {
         commentLabel.text = self.job.comments
         locationLabel.text = self.job.location
         dateLabel.text = String((self.job.date?.split(separator: " ")[0])!)
-        priceLabel.text = self.job.expectedPrice
+        priceLabel.text = self.job.price
         jobImage.kf.setImage(with: URL(string: url))
         requesterNameLabel.text = self.job.requesterName
     }

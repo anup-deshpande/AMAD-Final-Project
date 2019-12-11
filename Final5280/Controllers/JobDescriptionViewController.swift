@@ -14,6 +14,7 @@ class JobDescriptionViewController: UIViewController {
 
     @IBOutlet weak var jobImage: UIImageView!
     @IBOutlet weak var reqNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
@@ -79,31 +80,35 @@ class JobDescriptionViewController: UIViewController {
         dateLabel.text = "\(jobToDisplay!.date!.split(separator: " ").first!)"
         locationLabel.text = jobToDisplay?.location!
         commentsLabel.text = jobToDisplay?.comments!
+        priceLabel.text = jobToDisplay?.price!
         
     }
     
     
     func didSelectUser(at index: Int){
-        print(users[index].userId)
-        let userID = Auth.auth().currentUser?.uid
         
-        // Add selected user in created jobs
+        let userID = Auth.auth().currentUser?.uid
+       
         ref = Database.database().reference()
         ref = ref.child("Users").child(userID!).child("createdJobs").child("\(jobToDisplay!.id!)")
+        
+        // Add selected user in created jobs
         ref.child("acceptedUserID").setValue("\(users[index].userId!)")
         ref.child("acceptedUserName").setValue("\(users[index].firstName!) \(users[index].lastName!)")
-        
-        // TODO: Update price
+
+        // Update price
+        ref.child("expectedPrice").setValue(users[index].bidPrice!)
         
         // Remove Interested Users
-        ref = Database.database().reference()
-        ref = ref.child("Users").child(userID!).child("createdJobs").child("\(jobToDisplay!.id!)").child("InterestedUsers")
-        ref.removeValue()
-        
+        ref.child("InterestedUsers").removeValue()
         
         // TODO: Copy new job object to ongoing jobs of selected user
         
-        // TODO: Remove job from job pool
+        
+        // Remove job from job pool
+        ref = Database.database().reference()
+        ref = ref.child("jobs").child("\(jobToDisplay!.id!)")
+        ref.removeValue()
         
         // TODO: Update UI
         
@@ -112,7 +117,7 @@ class JobDescriptionViewController: UIViewController {
 
 }
 
-// MARK: interestedUsersTableView delegate methods
+// MARK: TableView delegate methods
 extension JobDescriptionViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -122,6 +127,11 @@ extension JobDescriptionViewController: UITableViewDelegate{
 
 
 extension JobDescriptionViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Interested Users"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
