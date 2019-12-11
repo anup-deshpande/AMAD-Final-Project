@@ -1337,7 +1337,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGO-qD-rEZ">
-                                <rect key="frame" x="15" y="397.66666666666669" width="50" height="21"/>
+                                <rect key="frame" x="20" y="397.66666666666669" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1363,6 +1363,9 @@
                                         <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapMakePayment:" destination="vUE-H0-7P1" eventType="touchUpInside" id="4XL-3e-XmZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-ds-boI">
                                 <rect key="frame" x="170.66666666666666" y="640.33333333333337" width="34" height="21"/>
@@ -1391,7 +1394,6 @@
                             <constraint firstItem="rNU-p6-ChS" firstAttribute="top" secondItem="McA-KE-s4A" secondAttribute="bottom" constant="15" id="Vho-Qp-bs5"/>
                             <constraint firstItem="N0O-Li-sft" firstAttribute="centerX" secondItem="bd2-8s-1BM" secondAttribute="centerX" id="XDs-US-h8Q"/>
                             <constraint firstItem="4Nx-9c-y7P" firstAttribute="top" secondItem="xjc-Zx-zF4" secondAttribute="bottom" constant="15" id="Y0u-cn-r1u"/>
-                            <constraint firstItem="bGO-qD-rEZ" firstAttribute="leading" secondItem="LMq-He-dHD" secondAttribute="leading" constant="15" id="dOO-RY-bYW"/>
                             <constraint firstItem="rck-Nj-9bJ" firstAttribute="leading" secondItem="hyh-jB-MRx" secondAttribute="leading" id="eV2-8V-FAp"/>
                             <constraint firstItem="4wa-lv-fTC" firstAttribute="top" secondItem="7rL-p2-reU" secondAttribute="bottom" constant="15" id="eXY-gz-ek9"/>
                             <constraint firstItem="xjc-Zx-zF4" firstAttribute="top" secondItem="wh1-Ux-wKt" secondAttribute="bottom" constant="15" id="efX-BD-1RW"/>
@@ -1403,6 +1405,7 @@
                             <constraint firstItem="sxZ-lA-Ct7" firstAttribute="top" secondItem="N0O-Li-sft" secondAttribute="bottom" constant="20" id="lP7-ei-O02"/>
                             <constraint firstItem="xjc-Zx-zF4" firstAttribute="leading" secondItem="wh1-Ux-wKt" secondAttribute="leading" id="mGI-4g-Oe3"/>
                             <constraint firstItem="bGO-qD-rEZ" firstAttribute="top" secondItem="rNU-p6-ChS" secondAttribute="bottom" constant="15" id="nQ6-9E-Z72"/>
+                            <constraint firstItem="bGO-qD-rEZ" firstAttribute="leading" secondItem="rNU-p6-ChS" secondAttribute="leading" id="oJs-cU-Lwn"/>
                             <constraint firstItem="hCu-JC-YN6" firstAttribute="top" secondItem="yzz-ds-boI" secondAttribute="bottom" constant="34" id="ssT-5P-yCJ"/>
                             <constraint firstItem="yzz-ds-boI" firstAttribute="top" secondItem="sxZ-lA-Ct7" secondAttribute="bottom" constant="30" id="upq-6G-ufE"/>
                             <constraint firstItem="rck-Nj-9bJ" firstAttribute="top" secondItem="hyh-jB-MRx" secondAttribute="bottom" constant="15" id="vAe-OO-G9b"/>
@@ -1411,6 +1414,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LMq-He-dHD"/>
                     </view>
+                    <connections>
+                        <outlet property="commentsLabel" destination="xjc-Zx-zF4" id="wKX-Lx-JQL"/>
+                        <outlet property="dateLabel" destination="4wa-lv-fTC" id="P5q-b4-MbK"/>
+                        <outlet property="jobImage" destination="Jse-yA-OsN" id="UmX-Wc-RuQ"/>
+                        <outlet property="locationLabel" destination="wh1-Ux-wKt" id="oRl-We-dcP"/>
+                        <outlet property="makePaymentButton" destination="hCu-JC-YN6" id="fft-Ij-SE2"/>
+                        <outlet property="priceLabel" destination="7rL-p2-reU" id="iOX-gU-Tra"/>
+                        <outlet property="reqNameLabel" destination="QVq-0p-kES" id="8F3-I3-qCv"/>
+                        <outlet property="statusLabel" destination="4Nx-9c-y7P" id="pK5-si-5PV"/>
+                        <outlet property="userImage" destination="sxZ-lA-Ct7" id="hX1-N2-IwN"/>
+                        <outlet property="userNameLabel" destination="yzz-ds-boI" id="qUm-ZN-6we"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vX7-5o-Hlp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,6 +17,7 @@ class YourJobPostingsViewController: UIViewController {
     var ref: DatabaseReference!
     let refreshControl = UIRefreshControl()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +74,10 @@ class YourJobPostingsViewController: UIViewController {
                 jobObject.latitiude = dict["latitude"] as? String
                 jobObject.longitude = dict["longitude"] as? String
                 jobObject.description = dict["description"] as? String
+                jobObject.acceptedUserName = dict["acceptedUserName"] as? String
+                jobObject.acceptedUserId = dict["acceptedUserId"] as? String
+                jobObject.status = dict["status"] as? String
+                print(jobObject.status)
                 self.results.append(jobObject)
             }
             
@@ -100,7 +105,7 @@ extension YourJobPostingsViewController: UITableViewDelegate{
             }else{
             
             let jobDescVC = storyboard?.instantiateViewController(identifier: "JobDescriptionViewControllerPayment") as! JobDescriptionViewControllerPayment
-           // jobDescVC.jobToDisplay = results[indexPath.row]
+            jobDescVC.jobToDisplay = results[indexPath.row]
             navigationController?.pushViewController(jobDescVC, animated: true)
         }
     }

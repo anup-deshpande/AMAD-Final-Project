@@ -23,6 +23,7 @@ class job{
     var comments: String?
     var latitiude : String?
     var longitude : String?
+    var status : String?
     init() {
     }
     
