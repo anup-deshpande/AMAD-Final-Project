@@ -111,8 +111,12 @@ class SignUpViewController: UIViewController {
                                 if error != nil{
                                     print(error)
                                 }
-                                KRProgressHUD.showSuccess(withMessage: "Signed up successfully")
-                                self.navigationController?.popViewController(animated: true)
+                                else
+                                {
+                                    KRProgressHUD.showSuccess(withMessage: "Signed up successfully")
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                                
                             }
                         }
                         if(error != nil){
@@ -125,7 +129,7 @@ class SignUpViewController: UIViewController {
             else
             {
                 print("ERROR")
-                print(error)
+                print(error as Any)
             }
         }
     }    
@@ -152,7 +156,6 @@ extension SignUpViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
     }

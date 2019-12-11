@@ -10,8 +10,6 @@ import UIKit
 import Kingfisher
 import Firebase
 import KRProgressHUD
-import MapKit
-import CoreLocation
 
 class DisplayJobViewController: UIViewController {
 
@@ -23,17 +21,10 @@ class DisplayJobViewController: UIViewController {
     @IBOutlet weak var jobImage: UIImageView!
     var job : job!
     var ref: DatabaseReference!
-    let locationManager = CLLocationManager()
     @IBOutlet weak var bidPrice: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.job.title
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self as! CLLocationManagerDelegate
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
         bidPrice.delegate = self
         loadJobDetails()
         self.ref = Database.database().reference()
@@ -42,7 +33,6 @@ class DisplayJobViewController: UIViewController {
         let userId = Auth.auth().currentUser?.uid
         let userName = Auth.auth().currentUser?.displayName
         let jobwithBidref = self.ref.child("Users").child(self.job.requesterId!).child("createdJobs").child(self.job.id!).child("InterestedUsers").child(userId!)
-        
         let bid = bidPrice.text
         let bidDetails : [String: Any?] = [
             "userName" : userName,
@@ -51,7 +41,6 @@ class DisplayJobViewController: UIViewController {
         jobwithBidref.setValue(bidDetails);
         KRProgressHUD.showSuccess(withMessage: "Your job request sent successfully")
         navigationController?.popViewController(animated: true)
-        
     }
     
     func loadJobDetails()
@@ -75,4 +64,6 @@ extension DisplayJobViewController : UITextFieldDelegate{
         self.view.endEditing(true)
     }
 }
+
+
 
