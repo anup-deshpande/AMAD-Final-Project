@@ -13,6 +13,7 @@
 		76748BD6239EA99800735369 /* JobDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD5239EA99800735369 /* JobDescriptionViewController.swift */; };
 		76748BD8239F76A900735369 /* interestedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD7239F76A900735369 /* interestedUserTableViewCell.swift */; };
 		76748BDA23A0D62000735369 /* ongoingJobsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BD923A0D62000735369 /* ongoingJobsTableViewCell.swift */; };
+		76748BE023A0FD7300735369 /* searchJobFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76748BDF23A0FD7300735369 /* searchJobFilterTableViewController.swift */; };
 		76A9DAF22386356100F73A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF12386356100F73A7D /* AppDelegate.swift */; };
 		76A9DAF42386356100F73A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF32386356100F73A7D /* SceneDelegate.swift */; };
 		76A9DAF62386356100F73A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9DAF52386356100F73A7D /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		76748BD5239EA99800735369 /* JobDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescriptionViewController.swift; sourceTree = "<group>"; };
 		76748BD7239F76A900735369 /* interestedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interestedUserTableViewCell.swift; sourceTree = "<group>"; };
 		76748BD923A0D62000735369 /* ongoingJobsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ongoingJobsTableViewCell.swift; sourceTree = "<group>"; };
+		76748BDF23A0FD7300735369 /* searchJobFilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchJobFilterTableViewController.swift; sourceTree = "<group>"; };
 		76A9DAEE2386356100F73A7D /* Final5280.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Final5280.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A9DAF12386356100F73A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76A9DAF32386356100F73A7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +157,11 @@
 				7633A587239A256200260885 /* newJobViewController.swift */,
 				B9B57996239D3F78009CCC7B /* DisplayJobViewController.swift */,
 				76748BD5239EA99800735369 /* JobDescriptionViewController.swift */,
+<<<<<<< HEAD
 				B9E8965623A0FDD50027CB75 /* JobDescriptionViewControllerPayment.swift */,
+=======
+				76748BDF23A0FD7300735369 /* searchJobFilterTableViewController.swift */,
+>>>>>>> a2c03583afae0f985c06d1883a5729e3fab4f7bd
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				76748BD2239E2BB500735369 /* yourJobPostingsTableViewCell.swift in Sources */,
 				76748BD4239E2F0600735369 /* job.swift in Sources */,
 				B946B9E723965E3B00FF73F6 /* user.swift in Sources */,
+				76748BE023A0FD7300735369 /* searchJobFilterTableViewController.swift in Sources */,
 				76C20094238F910400F0E1F1 /* OngoingJobsViewController.swift in Sources */,
 				76748BD8239F76A900735369 /* interestedUserTableViewCell.swift in Sources */,
 			);

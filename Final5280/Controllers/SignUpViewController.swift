@@ -150,6 +150,10 @@ class SignUpViewController: UIViewController {
                     // Update new user on database
                     self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "email" : user.email])
 
+<<<<<<< HEAD
+=======
+                    //xsignUptoBraintree(user);
+>>>>>>> a2c03583afae0f985c06d1883a5729e3fab4f7bd
                     // Change name in firebase Authentication
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = user.firstName! + " " + user.lastName!
