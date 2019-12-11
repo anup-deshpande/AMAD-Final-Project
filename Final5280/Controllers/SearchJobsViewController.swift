@@ -39,27 +39,29 @@ class SearchJobsViewController: UIViewController {
             for child in snapshot.children
             {
                 if let childSnapshot = child as? DataSnapshot{
-                    let dict = childSnapshot.value as? [String: AnyObject]
-                    let jb = job()
-                    jb.id = "\(dict!["id"]!)"
-                    jb.comments = "\(dict!["comment"]!)"
-                    jb.date = "\(dict!["date"]!)"
-                    jb.price = "\(dict!["price"]!)"
-                    jb.title = "\(dict!["title"]!)"
-                    jb.description = "\(dict!["description"]!)"
-                    jb.location = "\(dict!["location"]!)"
-                    jb.requesterId = "\(dict!["requesterId"]!)"
-                    jb.requesterName = "\(dict!["requesterName"]!)"
-                    jb.latitiude = "\(dict!["latitude"]!)"
-                    jb.longitude =  "\(dict!["longitude"]!)"
                     
+                    guard let dict = childSnapshot.value as? [String: Any?] else {return}
+                    let jb = job()
+                    jb.id = dict["id"] as? String
+                    jb.comments = dict["comment"] as? String
+                    jb.date = dict["date"] as? String
+                    jb.price = dict["price"] as? String
+                    jb.title = dict["title"] as? String
+                    jb.description = dict["description"] as? String
+                    jb.location = dict["location"] as? String
+                    jb.requesterId = dict["requesterId"] as? String
+                    jb.requesterName = dict["requesterName"] as? String
+                    jb.latitiude = dict["latitude"] as? String
+                    jb.longitude =  dict["longitude"] as? String
+                    jb.image = dict["image"] as? String
                     let jobLocation = CLLocation(latitude: Double(jb.latitiude!) as! CLLocationDegrees, longitude: Double(jb.longitude!) as! CLLocationDegrees)
                     let distanceInMeters = self.userLat!.distance(from: jobLocation)
                     let distanceInMiles = distanceInMeters/(1609.34)
-                    if(distanceInMiles<25 )
-                    {
-                        self.jobList.append(jb);
-                    }
+                    self.jobList.append(jb);
+                    //                    if(distanceInMiles<25 )
+                    //                    {
+                    //                        self.jobList.append(jb);
+                    //                    }
                 }
             }
             self.searchJobTableView.reloadData();
