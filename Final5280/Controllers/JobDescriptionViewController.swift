@@ -95,9 +95,10 @@ class JobDescriptionViewController: UIViewController {
         // Add selected user in created jobs
         ref.child("acceptedUserID").setValue("\(users[index].userId!)")
         ref.child("acceptedUserName").setValue("\(users[index].firstName!) \(users[index].lastName!)")
+        
 
         // Update price
-        ref.child("expectedPrice").setValue(users[index].bidPrice!)
+        ref.child("price").setValue(users[index].bidPrice!)
         
         // Remove Interested Users
         ref.child("InterestedUsers").removeValue()

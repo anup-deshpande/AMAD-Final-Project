@@ -105,8 +105,8 @@ class newJobViewController: UIViewController {
                                 "price": self.priceTextField.text!,
                                 "date": "\(self.DatePicker.date)",
                                 "location": self.locationTextField.text!,
-                                "lat": self.latitude!,
-                                "long": self.longtitude!,
+                                "latitude": self.latitude!,
+                                "longitude": self.longtitude!,
                                 "comment": self.commentsTextField.text ?? ""
                             ]
                             // Store new job in users created job pool

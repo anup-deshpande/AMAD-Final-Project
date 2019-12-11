@@ -50,8 +50,8 @@ class SearchJobsViewController: UIViewController {
                     jb.location = "\(dict!["location"]!)"
                     jb.requesterId = "\(dict!["requesterId"]!)"
                     jb.requesterName = "\(dict!["requesterName"]!)"
-                    jb.latitiude = "\(dict!["lat"]!)"
-                    jb.longitude =  "\(dict!["long"]!)"
+                    jb.latitiude = "\(dict!["latitude"]!)"
+                    jb.longitude =  "\(dict!["longitude"]!)"
                     
                     let jobLocation = CLLocation(latitude: Double(jb.latitiude!) as! CLLocationDegrees, longitude: Double(jb.longitude!) as! CLLocationDegrees)
                     let distanceInMeters = self.userLat!.distance(from: jobLocation)
