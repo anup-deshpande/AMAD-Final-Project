@@ -157,11 +157,8 @@
 				7633A587239A256200260885 /* newJobViewController.swift */,
 				B9B57996239D3F78009CCC7B /* DisplayJobViewController.swift */,
 				76748BD5239EA99800735369 /* JobDescriptionViewController.swift */,
-<<<<<<< HEAD
 				B9E8965623A0FDD50027CB75 /* JobDescriptionViewControllerPayment.swift */,
-=======
 				76748BDF23A0FD7300735369 /* searchJobFilterTableViewController.swift */,
->>>>>>> a2c03583afae0f985c06d1883a5729e3fab4f7bd
 			);
 			path = Controllers;
 			sourceTree = "<group>";
