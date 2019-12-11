@@ -23,6 +23,7 @@ class SignUpViewController: UIViewController {
     let storage = Storage.storage()
     var data = Data()
     var metaData = StorageMetadata()
+    var isProfilepic = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,35 +42,57 @@ class SignUpViewController: UIViewController {
         
     }
     
-    func validation() -> Bool
-    {
+    func isEverythingValid() -> Bool{
         var flag = true
-        if(firstName.text == ""){
-            print("Email Cannot be empty");
+        
+        if firstName.text! == "" {
+            self.firstName.layer.borderWidth = 1.0
+            self.firstName.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.firstName.layer.cornerRadius = 7
             flag = false
         }
-        if(lastName.text == ""){
-            print("Last Name Cannot be empty");
+        
+        if lastName.text! == "" {
+            self.lastName.layer.borderWidth = 1.0
+            self.lastName.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.lastName.layer.cornerRadius = 7
             flag = false
         }
-        if(email.text == "")
-        {
-            print("Password Cannot be empty");
+        
+        if email.text! == "" {
+            self.email.layer.borderWidth = 1.0
+            self.email.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.email.layer.cornerRadius = 7
             flag = false
         }
-        if(password.text == "")
-        {
-            print("Confirrm Password Cannot be empty");
+        
+        if password.text! == "" {
+            self.password.layer.borderWidth = 1.0
+            self.password.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.password.layer.cornerRadius = 7
             flag = false
         }
-        if(confirmPassword.text == "")
-        {
-            print("Confirrm Password Cannot be empty");
+
+        if confirmPassword.text! == "" {
+            self.confirmPassword.layer.borderWidth = 1.0
+            self.confirmPassword.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.confirmPassword.layer.cornerRadius = 7
             flag = false
         }
-        if(password.text != confirmPassword.text)
-        {
-            flag = false;
+        
+        if password.text != confirmPassword.text{
+            self.confirmPassword.layer.borderWidth = 1.0
+            self.confirmPassword.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.confirmPassword.layer.cornerRadius = 7
+            self.password.layer.borderWidth = 1.0
+            self.password.layer.borderColor =  #colorLiteral(red: 0.9151673913, green: 0.2175602615, blue: 0.1735651791, alpha: 1)
+            self.password.layer.cornerRadius = 7
+            flag = false
+        }
+        
+        if !isProfilepic {
+            KRProgressHUD.showWarning(withMessage: "Please upload a profile picture");
+            flag = false
         }
         return flag
     }
@@ -84,53 +107,51 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUp(_ sender: Any) {
         
-        let user = User()
-        user.email = email.text!
-        user.firstName = firstName.text!
-        user.lastName = lastName.text!
-        user.profilePicture = ""
-        
-        let profileRef = self.storage.reference().child("userProfile").child(UUID().uuidString)
-        let uploadTask = profileRef.putData(self.data, metadata: self.metaData) { (metadata, error) in
-            if error == nil
-            {
-                print("success")
-                profileRef.downloadURL { (url, error) in
-                    user.profilePicture = url?.absoluteString
-                    Auth.auth().createUser(withEmail: user.email!, password: self.password.text!) { (result, error) in
-                        if(result != nil){
-                            user.userId = result?.user.uid
-                            
-                            // Update new user on database
-                            self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "profilePicture" : user.profilePicture, "email" : user.email])
-                            
-                            // Change name in firebase Authentication
-                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                            changeRequest?.displayName = user.firstName! + " " + user.lastName!
-                            changeRequest?.commitChanges { (error) in
-                                if error != nil{
-                                    print(error)
-                                }
-                                else
-                                {
-                                    KRProgressHUD.showSuccess(withMessage: "Signed up successfully")
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                                
-                            }
+        if(isEverythingValid())
+        {
+            let user = User()
+            user.email = email.text!
+            user.firstName = firstName.text!
+            user.lastName = lastName.text!
+            user.profilePicture = ""
+            Auth.auth().createUser(withEmail: user.email!, password: self.password.text!) { (result, error) in
+                if(result != nil){
+                    user.userId = result?.user.uid
+                    // Update new user on database
+                    self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "email" : user.email])
+                    
+                    // Change name in firebase Authentication
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = user.firstName! + " " + user.lastName!
+                    changeRequest?.commitChanges { (error) in
+                        if error != nil{
+                            //print(error)
                         }
-                        if(error != nil){
-                            print(error!)
-                        }
-                        
                     }
                 }
+                if(error != nil){
+                    print(error!)
+                }
+                
             }
-            else
-            {
-                print("ERROR")
-                print(error as Any)
+            let profileRef = self.storage.reference().child("userProfile").child(UUID().uuidString)
+            let uploadTask = profileRef.putData(self.data, metadata: self.metaData) { (metadata, error) in
+                if error == nil
+                {
+                    profileRef.downloadURL { (url, error) in
+                        user.profilePicture = url?.absoluteString
+
+                        self.ref.child("Users").child(user.userId!).child("profilePicture").setValue(user.profilePicture)
+                    }
+                }
+                else
+                {
+                    print("ERROR")
+                    print(error as Any)
+                }
             }
+            KRProgressHUD.showSuccess(withMessage: "Signed up successfully")
+            self.navigationController?.popViewController(animated: true)
         }
     }    
 }
@@ -145,6 +166,7 @@ extension SignUpViewController : UIImagePickerControllerDelegate , UINavigationC
             profilePicture.image = image
             self.data = (profilePicture.image?.pngData())!
             self.metaData.contentType = "image/png"
+            self.isProfilepic = true
         }
         dismiss(animated: true, completion: nil)
         
@@ -158,5 +180,9 @@ extension SignUpViewController: UITextFieldDelegate{
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
 }

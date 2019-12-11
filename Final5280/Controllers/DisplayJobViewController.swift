@@ -50,8 +50,6 @@ class DisplayJobViewController: UIViewController {
         locationLabel.text = self.job!.location!
         dateLabel.text = String((self.job!.date!.split(separator: " ")[0]))
         priceLabel.text = self.job!.price!
-        
-      
         if let stringUrl = self.job!.image {
             let url = URL(string: stringUrl)
             jobImage.kf.setImage(with: url)
