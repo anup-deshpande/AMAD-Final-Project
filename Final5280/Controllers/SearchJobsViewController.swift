@@ -53,6 +53,7 @@ class SearchJobsViewController: UIViewController {
     
     func readJobList()
     {
+        
         self.ref.child("jobs").observe(DataEventType.value) { (snapshot) in  
             self.jobList = []
             for child in snapshot.children
@@ -73,7 +74,10 @@ class SearchJobsViewController: UIViewController {
                     jb.latitiude = dict["latitude"] as? String
                     jb.longitude =  dict["longitude"] as? String
                     jb.image = dict["image"] as? String
+                    guard let lat = jb.latitiude else {return}
                     let jobLocation = CLLocation(latitude: Double(jb.latitiude!) as! CLLocationDegrees, longitude: Double(jb.longitude!) as! CLLocationDegrees)
+                    
+                    guard let userlat = self.userLat else {return}
                     let distanceInMeters = self.userLat!.distance(from: jobLocation)
                     let distanceInMiles = distanceInMeters/(1609.34)
                     self.jobList.append(jb);

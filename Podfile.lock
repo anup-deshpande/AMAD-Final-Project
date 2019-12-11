@@ -1,5 +1,36 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - Braintree/Card (4.30.2):
+    - Braintree/Core
+  - Braintree/Core (4.30.2)
+  - Braintree/PaymentFlow (4.30.2):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.30.2):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.30.2)
+  - Braintree/UnionPay (4.30.2):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (7.5.0):
+    - BraintreeDropIn/DropIn (= 7.5.0)
+  - BraintreeDropIn/DropIn (7.5.0):
+    - Braintree/Card (~> 4.30)
+    - Braintree/Core (~> 4.30)
+    - Braintree/PaymentFlow (~> 4.30)
+    - Braintree/PayPal (~> 4.30)
+    - Braintree/UnionPay (~> 4.30)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (7.5.0)
   - Firebase/Analytics (6.13.0):
     - Firebase/Core
   - Firebase/Auth (6.13.0):
@@ -102,9 +133,11 @@ PODS:
   - nanopb/encode (0.3.9011)
   - SwiftyJSON (4.3.0)
   - SwipeCellKit (2.7.1)
+  - WHRoundedImageView (1.1.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
+  - BraintreeDropIn
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -115,10 +148,13 @@ DEPENDENCIES:
   - KRProgressHUD
   - SwiftyJSON (~> 4.0)
   - SwipeCellKit
+  - WHRoundedImageView
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Braintree
+    - BraintreeDropIn
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -143,9 +179,12 @@ SPEC REPOS:
     - nanopb
     - SwiftyJSON
     - SwipeCellKit
+    - WHRoundedImageView
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Braintree: 9fc21dc2ead57d104c4a0743454308e404217ec7
+  BraintreeDropIn: 15d6f53bf80bc0ae7809ab17803100c0a5448fd2
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseAnalytics: 45f36d9c429fc91d206283900ab75390cd05ee8a
   FirebaseAuth: 7d0f84873926f6648bbd1391a318dfb1a26b5e4f
@@ -170,7 +209,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+  WHRoundedImageView: 5d68870a4e1b5b5bfb215048940cf6c0d7aa2746
 
-PODFILE CHECKSUM: c9e2f235c10dbb33088289b54fde56d4f4291014
+PODFILE CHECKSUM: 01c5b0b61e9b344d9162042b62dbf9fba334d5b4
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.8.3

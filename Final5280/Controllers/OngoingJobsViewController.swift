@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import SwipeCellKit
+import KRProgressHUD
 
 class OngoingJobsViewController: UIViewController {
 
@@ -99,6 +100,10 @@ class OngoingJobsViewController: UIViewController {
 // MARK: Table View Delegate method
 extension OngoingJobsViewController: UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
 
 extension OngoingJobsViewController: UITableViewDataSource{
@@ -137,8 +142,10 @@ extension OngoingJobsViewController:  SwipeTableViewCellDelegate{
             
             
             self.ref = Database.database().reference()
-            self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("requestedJobs").child(self.results[indexPath.row].id!)
+            self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("createdJobs").child(self.results[indexPath.row].id!)
             self.ref.child("status").setValue("Completed")
+            
+            KRProgressHUD.showSuccess(withMessage: "Status changed to complete")
             
             
         }
@@ -150,10 +157,15 @@ extension OngoingJobsViewController:  SwipeTableViewCellDelegate{
             self.ref.child("status").setValue("Working")
             
             self.ref = Database.database().reference()
-                       self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("requestedJobs").child(self.results[indexPath.row].id!)
+                       self.ref = self.ref.child("Users").child(self.results[indexPath.row].requesterId!).child("createdJobs").child(self.results[indexPath.row].id!)
                        self.ref.child("status").setValue("Working")
             
+            KRProgressHUD.showSuccess(withMessage: "Status changed to started")
+            
         }
+        
+        completedAction.hidesWhenSelected = true
+        startedAction.hidesWhenSelected = true
         
         completedAction.image = UIImage(systemName: "checkmark.seal")
         completedAction.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
