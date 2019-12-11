@@ -867,24 +867,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmu-Zq-4Eu">
-                                <rect key="frame" x="134.33333333333334" y="395.66666666666669" width="106.66666666666666" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GjE-1O-iQZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ongoingJobTableViewCell" rowHeight="125" id="2Ua-Rl-F4T" customClass="ongoingJobsTableViewCell" customModule="Final5280" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Ua-Rl-F4T" id="ZCe-25-R9N">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-ow-Qrd">
+                                                    <rect key="frame" x="25" y="11" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-Am-Y2L">
+                                                    <rect key="frame" x="25" y="40" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3j-S8-EyP">
+                                                    <rect key="frame" x="25" y="69" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umd-Io-CLS">
+                                                    <rect key="frame" x="25" y="98" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="r3j-S8-EyP" secondAttribute="trailing" constant="10" id="0Px-qG-3TP"/>
+                                                <constraint firstItem="Umd-Io-CLS" firstAttribute="leading" secondItem="ZCe-25-R9N" secondAttribute="leadingMargin" constant="10" id="AI0-Ts-i5i"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vYn-ow-Qrd" secondAttribute="trailing" constant="10" id="Buy-S4-WXZ"/>
+                                                <constraint firstItem="r3j-S8-EyP" firstAttribute="leading" secondItem="ZCe-25-R9N" secondAttribute="leadingMargin" constant="10" id="E8o-Hc-LLg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Umd-Io-CLS" secondAttribute="bottom" constant="6" id="F9a-kJ-1IW"/>
+                                                <constraint firstItem="r3j-S8-EyP" firstAttribute="top" secondItem="CVv-Am-Y2L" secondAttribute="bottom" constant="8" id="LAe-6P-Fol"/>
+                                                <constraint firstItem="vYn-ow-Qrd" firstAttribute="leading" secondItem="ZCe-25-R9N" secondAttribute="leadingMargin" constant="10" id="Yql-cd-rZq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Umd-Io-CLS" secondAttribute="trailing" constant="10" id="ZPc-pZ-ptI"/>
+                                                <constraint firstItem="CVv-Am-Y2L" firstAttribute="top" secondItem="vYn-ow-Qrd" secondAttribute="bottom" constant="8" id="bMB-pd-ORb"/>
+                                                <constraint firstItem="CVv-Am-Y2L" firstAttribute="leading" secondItem="ZCe-25-R9N" secondAttribute="leadingMargin" constant="10" id="c1d-zO-Q2A"/>
+                                                <constraint firstItem="vYn-ow-Qrd" firstAttribute="top" secondItem="ZCe-25-R9N" secondAttribute="topMargin" id="dAp-cb-lCF"/>
+                                                <constraint firstItem="Umd-Io-CLS" firstAttribute="top" secondItem="r3j-S8-EyP" secondAttribute="bottom" constant="8" id="gpL-E2-CyE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CVv-Am-Y2L" secondAttribute="trailing" constant="10" id="hFv-pw-KLx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="Umd-Io-CLS" id="QtZ-7j-aQ7"/>
+                                            <outlet property="jobAddressLabel" destination="CVv-Am-Y2L" id="Zmf-mJ-7Sn"/>
+                                            <outlet property="jobTitleLabel" destination="vYn-ow-Qrd" id="eQ3-Oc-IJH"/>
+                                            <outlet property="priceLabel" destination="r3j-S8-EyP" id="7g6-Na-DT5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Tmu-Zq-4Eu" firstAttribute="centerY" secondItem="Y45-5e-FQw" secondAttribute="centerY" id="7TJ-R9-bkc"/>
-                            <constraint firstItem="Tmu-Zq-4Eu" firstAttribute="centerX" secondItem="Y45-5e-FQw" secondAttribute="centerX" id="TMp-cf-EwR"/>
+                            <constraint firstItem="GjE-1O-iQZ" firstAttribute="top" secondItem="Y45-5e-FQw" secondAttribute="top" id="492-bw-Klk"/>
+                            <constraint firstAttribute="bottom" secondItem="GjE-1O-iQZ" secondAttribute="bottom" id="TGO-gj-KZd"/>
+                            <constraint firstItem="GjE-1O-iQZ" firstAttribute="leading" secondItem="yby-cH-sH4" secondAttribute="leading" id="bNm-iO-gd4"/>
+                            <constraint firstItem="GjE-1O-iQZ" firstAttribute="trailing" secondItem="yby-cH-sH4" secondAttribute="trailing" id="ib7-mu-GEa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yby-cH-sH4"/>
                     </view>
+                    <connections>
+                        <outlet property="ongoingJobsTableView" destination="GjE-1O-iQZ" id="TuE-LG-xlS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcA-zL-ggs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="899"/>
+            <point key="canvasLocation" x="2624.8000000000002" y="898.52216748768478"/>
         </scene>
         <!--Your Job Postings View Controller-->
         <scene sceneID="sxd-Zt-Bvw">

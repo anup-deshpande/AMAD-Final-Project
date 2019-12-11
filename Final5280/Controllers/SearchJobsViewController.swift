@@ -18,6 +18,9 @@ class SearchJobsViewController: UIViewController {
     var jobObj : job? = nil
     let locationManager = CLLocationManager()
     var userLat : CLLocation?
+    
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
@@ -27,10 +30,26 @@ class SearchJobsViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
+        
+        // Configure searchJobTableView
         searchJobTableView.delegate = self
         searchJobTableView.dataSource = self
+        searchJobTableView.refreshControl = refreshControl
         
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshJobPostings(_:)), for: .valueChanged)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        readJobList()
+    }
+    
+    @objc private func refreshJobPostings(_ sender: Any) {
+        // Fetch new data
+        readJobList()
+    }
+    
+    
     
     func readJobList()
     {
@@ -65,8 +84,10 @@ class SearchJobsViewController: UIViewController {
                 }
             }
             self.searchJobTableView.reloadData();
+            self.refreshControl.endRefreshing()
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! DisplayJobViewController
         vc.job = self.jobObj
