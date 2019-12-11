@@ -19,7 +19,7 @@ class SearchJobTableViewCell: UITableViewCell {
     
     func setValue(_ jobObj : job , _ userLocation : CLLocation ) {
         self.jobTitleLabel.text = jobObj.title
-        self.priceLabel.text = "$ " + jobObj.expectedPrice!
+        self.priceLabel.text = "$ " + jobObj.price!
         self.jobLocationLabel.text = jobObj.location
         let jobLocation = CLLocation(latitude: Double(jobObj.latitiude!) as! CLLocationDegrees, longitude: Double(jobObj.longitude!) as! CLLocationDegrees)
         let distanceInMeters = userLocation.distance(from: jobLocation)

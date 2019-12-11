@@ -126,7 +126,7 @@
 		<key>KRActivityIndicatorView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>22</integer>
 		</dict>
 		<key>KRProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
@@ -136,7 +136,7 @@
 		<key>Kingfisher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>21</integer>
 		</dict>
 		<key>Pods-Final5280.xcscheme</key>
 		<dict>
