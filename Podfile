@@ -18,5 +18,6 @@ pod 'Kingfisher'
 pod "KRProgressHUD"
 pod 'Alamofire', '~> 5.0.0-rc.2'
 pod 'SwiftyJSON', '~> 4.0'
+pod 'SwipeCellKit'
 
 end

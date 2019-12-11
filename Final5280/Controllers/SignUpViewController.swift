@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import KRProgressHUD
+import Alamofire
+import SwiftyJSON
 
 class SignUpViewController: UIViewController {
     
@@ -24,6 +26,7 @@ class SignUpViewController: UIViewController {
     var data = Data()
     var metaData = StorageMetadata()
     var isProfilepic = false;
+    var signUpAPI = "http://ec2-54-144-115-37.compute-1.amazonaws.com/signUp"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +108,28 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    func signUptoBraintree(_ userObj : User) {
+        let parameters: [String:String] = [
+            "firstName" : userObj.firstName!,
+            "lastName" : userObj.lastName!,
+            "phone" : "1111111111",
+            "email" : userObj.email!
+        ]
+        AF.request(signUpAPI, method: .post , parameters: parameters , encoding: JSONEncoding.default)
+            .responseJSON { response in
+//                switch response.result {
+//                case .success(let value):
+//                    
+//                    let json = JSON(vale)
+//                    if json["status"].stringValue == "200"{
+//                        let customerId = json["customerId"].stringValue
+//                        
+//                    }
+//                }
+                
+        }
+    }
+    
     @IBAction func signUp(_ sender: Any) {
         
         if(isEverythingValid())
@@ -119,7 +144,8 @@ class SignUpViewController: UIViewController {
                     user.userId = result?.user.uid
                     // Update new user on database
                     self.ref.child("Users").child(user.userId!).setValue(["userId" : user.userId , "firstName" : user.firstName , "lastName" : user.lastName , "email" : user.email])
-                    
+
+                    signUptoBraintree(user);
                     // Change name in firebase Authentication
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = user.firstName! + " " + user.lastName!
