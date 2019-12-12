@@ -204,13 +204,13 @@ class JobDescriptionViewControllerPayment: UIViewController {
                     ]
                     
                     
-                    //self.ref.setValue(jobToCopy)
+                    self.ref.setValue(jobToCopy)
                     
                     
                     self.ref = Database.database().reference()
                     self.ref = self.ref.child("Users").child(Auth.auth().currentUser!.uid).child("createdJobs").child(self.jobToDisplay!.id!)
                     
-                    //self.ref.removeValue()
+                    self.ref.removeValue()
                     
                     self.ref = Database.database().reference()
                     self.ref = self.ref.child("Users").child(self.jobToDisplay!.acceptedUserId!).child("gotPaidJobs").child(self.jobToDisplay!.id!)
