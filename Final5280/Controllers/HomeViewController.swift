@@ -74,9 +74,6 @@ class HomeViewController: UIViewController {
             view.addSubview(searchJobVC.view)
             self.topView = searchJobVC.view
             addChild(searchJobVC)
-            
-            
-            self.navigationItem
             break
             
         case .ongoingJobs:

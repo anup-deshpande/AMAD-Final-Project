@@ -79,6 +79,7 @@ class YourJobPostingsViewController: UIViewController {
                 jobObject.status = dict["status"] as? String
                 print(jobObject.status)
                 self.results.append(jobObject)
+                
             }
             
             self.refreshControl.endRefreshing()

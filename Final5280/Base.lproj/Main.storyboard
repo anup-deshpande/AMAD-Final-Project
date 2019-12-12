@@ -68,16 +68,17 @@
                                     <segue destination="baG-p4-VYz" kind="show" identifier="loginToSignUpSegway" id="Us8-Nz-bw7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTp-p1-HMh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTp-p1-HMh">
                                 <rect key="frame" x="142" y="125" width="91" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ Easy Dollar " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glr-8I-RgE">
-                                <rect key="frame" x="103" y="161" width="169" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy Dollar " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glr-8I-RgE">
+                                <rect key="frame" x="87.666666666666686" y="161" width="200" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="aYe-BR-daY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -86,11 +87,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pqD-xD-6Me" firstAttribute="top" secondItem="XE1-mw-bdc" secondAttribute="bottom" constant="20" id="8Ka-Oh-9Rg"/>
+                            <constraint firstItem="RTp-p1-HMh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="9zQ-WO-aVM"/>
+                            <constraint firstItem="glr-8I-RgE" firstAttribute="top" secondItem="RTp-p1-HMh" secondAttribute="bottom" constant="15" id="CCG-xT-GzU"/>
                             <constraint firstItem="blO-Kg-5PZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hs8-ff-3ZN"/>
                             <constraint firstItem="lCl-61-L9B" firstAttribute="top" secondItem="pqD-xD-6Me" secondAttribute="bottom" constant="40" id="IE2-3S-OjY"/>
                             <constraint firstItem="lCl-61-L9B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IXy-Yx-dId"/>
                             <constraint firstItem="XE1-mw-bdc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="K0f-KT-dip"/>
                             <constraint firstItem="XE1-mw-bdc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rad-P9-ZtN"/>
+                            <constraint firstItem="glr-8I-RgE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cTY-51-X2f"/>
+                            <constraint firstItem="RTp-p1-HMh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pFb-Dp-gUY"/>
                             <constraint firstItem="pqD-xD-6Me" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uYZ-TI-Krs"/>
                             <constraint firstItem="blO-Kg-5PZ" firstAttribute="top" secondItem="lCl-61-L9B" secondAttribute="bottom" constant="20" id="uhx-v6-Rll"/>
                         </constraints>
