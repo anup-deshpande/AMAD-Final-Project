@@ -80,11 +80,11 @@ class SearchJobsViewController: UIViewController {
                     guard let userlat = self.userLat else {return}
                     let distanceInMeters = self.userLat!.distance(from: jobLocation)
                     let distanceInMiles = distanceInMeters/(1609.34)
-                    self.jobList.append(jb);
-                    //                    if(distanceInMiles<25 )
-                    //                    {
-                    //                        self.jobList.append(jb);
-                    //                    }
+                    //self.jobList.append(jb);
+                    if(distanceInMiles<25 && jb.requesterId! != Auth.auth().currentUser?.uid)
+                    {
+                        self.jobList.append(jb);
+                    }
                 }
             }
             self.searchJobTableView.reloadData();

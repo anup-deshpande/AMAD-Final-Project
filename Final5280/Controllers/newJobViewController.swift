@@ -126,6 +126,7 @@ class newJobViewController: UIViewController {
             }
             else
             {
+                self.ref = Database.database().reference()
                 self.ref = self.ref.child("jobs")
                 self.userRef = self.userRef.child("Users").child("\(Auth.auth().currentUser!.uid)").child("createdJobs")
                 let newRecordRef = self.ref.childByAutoId()

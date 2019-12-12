@@ -51,6 +51,7 @@ class YourJobPostingsViewController: UIViewController {
     func getJobs(){
         
         let userID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference()
         ref.child("Users").child(userID!).child("createdJobs").observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Clear table view data before adding new
@@ -81,7 +82,7 @@ class YourJobPostingsViewController: UIViewController {
                 self.results.append(jobObject)
                 
             }
-            
+            print(self.results)
             self.refreshControl.endRefreshing()
             self.jobPostingsTableView.reloadData()
            
@@ -120,11 +121,10 @@ extension YourJobPostingsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobPostingsCell", for: indexPath) as! yourJobPostingsTableViewCell
         
+        print("title is -------------- \(results[indexPath.row].title)")
         cell.jobTitleLabel.text = results[indexPath.row].title!
         cell.addressLabel.text = results[indexPath.row].location!
         cell.priceLabel.text = "$\(results[indexPath.row].price!)"
-        
-        
         return cell
     }
     
