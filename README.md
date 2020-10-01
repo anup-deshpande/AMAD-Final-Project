@@ -4,7 +4,7 @@
 
 ## What is Easy Dollar ?
 Easy dollar is a mobile marketplace for local services. 
-It helps customers hire freelance workers for all their service needs at their doorsteps such as repairing a computer, walking a pet for someone, mowing a lawn, cooking food and other similar tasks.
+It helps customers to hire freelance workers for all their service needs at their doorsteps such as repairing a computer, walking a pet for someone, mowing a lawn, cooking food and other similar tasks.
 It also helps freelance workers to see potential work opportunities in the nearby area.
 
 ## App Features
